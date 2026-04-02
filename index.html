@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DostlukPubgUcShop | PUBG Mobile UC Resmi Satış Merkezi</title>
+    <title>DostlukPubgUcShop | Professional Gaming Store</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,314 +16,410 @@
             --primary: #fbbf24;
             --secondary: #1e293b;
             --accent: #3b82f6;
-            --glass: rgba(30, 41, 59, 0.7);
+            --danger: #ef4444;
+            --success: #22c55e;
+            --glass: rgba(15, 23, 42, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: #0f172a;
             background-image: 
-                radial-gradient(at 0% 0%, rgba(251, 191, 36, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+                radial-gradient(at 0% 0%, rgba(251, 191, 36, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(30, 41, 59, 0.5) 0px, transparent 50%);
             color: #f8fafc;
             font-family: 'Rajdhani', sans-serif;
-            scroll-behavior: smooth;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .font-game { font-family: 'Orbitron', sans-serif; }
 
-        /* Glassmorphism Effect */
-        .glass-card {
+        /* Professional Glassmorphism */
+        .glass-panel {
             background: var(--glass);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        .glass-card:hover {
-            transform: translateY(-12px) scale(1.02);
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-15px);
             border-color: var(--primary);
             box-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
         }
 
-        .neon-glow {
-            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+        /* Neon & Glow Effects */
+        .neon-border {
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
         }
 
-        .btn-gradient {
+        .text-neon {
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+
+        /* Buttons */
+        .btn-master {
             background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
             color: #000;
-            font-weight: 900;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
             transition: 0.3s;
         }
 
-        .btn-gradient:hover {
-            filter: brightness(1.1);
-            box-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
-            transform: translateY(-2px);
+        .btn-master::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(45deg);
+            transition: 0.5s;
+            left: -100%;
         }
 
-        .uc-image {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.4));
-            margin: 0 auto;
+        .btn-master:hover::after {
+            left: 100%;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
+        /* Modal Ulgamy */
+        #paymentOverlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .terminal-box {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 2.5rem;
+            border: 2px solid var(--primary);
+            overflow: hidden;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .custom-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: 0.3s;
+        }
+
+        .custom-input:focus {
+            border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.6);
+            outline: none;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+        }
+
+        /* Loading Animation */
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #000;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 10px; }
-
-        .stat-card {
-            border-left: 4px solid var(--primary);
-        }
-
-        .floating-wa {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-        }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <a href="https://wa.me/905016873001" class="floating-wa bg-green-500 w-16 h-16 rounded-full flex items-center justify-center text-white text-3xl shadow-2xl">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <nav class="fixed top-0 w-full z-50 glass-card border-b border-white/10">
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <div class="bg-yellow-500 p-2 rounded-lg shadow-[0_0_15px_#fbbf24]">
-                    <i class="fa-solid fa-bolt text-black text-xl"></i>
+                <div class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+                    <i class="fa-solid fa-bolt-lightning text-black text-2xl"></i>
                 </div>
                 <div>
-                    <span class="font-game text-xl font-black text-yellow-500 block leading-none">DOSTLUK</span>
-                    <span class="text-[10px] uppercase tracking-[3px] text-gray-400">PUBGUCSHOP</span>
+                    <h1 class="font-game text-xl font-black text-yellow-500 leading-none tracking-tighter">DOSTLUK</h1>
+                    <span class="text-[9px] uppercase tracking-[4px] text-gray-400 font-bold italic">PUBGUCSHOP</span>
                 </div>
             </div>
-            <div class="hidden lg:flex gap-10 font-bold text-xs uppercase tracking-widest">
-                <a href="#home" class="hover:text-yellow-500 transition">Baş sahypa</a>
-                <a href="#market" class="text-yellow-500">UC Market</a>
-                <a href="#stats" class="hover:text-yellow-500 transition">Statistika</a>
-                <a href="#faq" class="hover:text-yellow-500 transition">Sorag-Jogap</a>
-            </div>
-            <div class="flex items-center gap-3 bg-green-500/10 px-4 py-2 rounded-full border border-green-500/20">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
-                <span class="text-green-500 text-[10px] font-black uppercase">Ulgamda: 7/24</span>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-2 bg-green-500/10 px-4 py-2 rounded-full border border-green-500/20">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></span>
+                    <span class="text-green-500 text-[10px] font-black uppercase tracking-widest">Online</span>
+                </div>
+                <button class="text-white hover:text-yellow-500 transition text-xl">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="pt-40 pb-20 px-6 text-center">
-        <div class="animate__animated animate__fadeInDown">
-            <span class="bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 px-4 py-1 rounded-full text-[10px] font-bold tracking-[5px] uppercase mb-6 inline-block">Professional Gaming Store</span>
-            <h1 class="text-6xl md:text-8xl font-game font-black mb-6 tracking-tighter leading-none">
-                <span class="text-white">DOSTLUK</span><br>
-                <span class="text-yellow-500 neon-glow italic">PUBGUCSHOP</span>
-            </h1>
-            <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-lg mb-10 tracking-[2px]">
-                Türkiýe we Türkmenistan üçin iň çalt, iň ygtybarly we iň amatly PUBG Mobile UC hyzmaty. 5 minutda hasabyňyzda!
+    <main class="pt-32 pb-20 px-4 max-w-7xl mx-auto">
+        
+        <header class="text-center mb-20 animate__animated animate__fadeIn">
+            <div class="inline-flex items-center gap-2 bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-8">
+                <i class="fa-solid fa-crown text-yellow-500 text-xs"></i>
+                <span class="text-[10px] font-bold uppercase tracking-[3px] text-gray-400">Official Store 2026</span>
+            </div>
+            <h2 class="text-6xl md:text-8xl font-game font-black mb-6 tracking-tighter leading-none">
+                <span class="text-white block">DOSTLUK</span>
+                <span class="text-yellow-500 text-neon italic block mt-2">PUBGUCSHOP</span>
+            </h2>
+            <div class="h-1 w-24 bg-yellow-500 mx-auto rounded-full mb-8"></div>
+            <p class="text-gray-400 max-w-lg mx-auto text-sm md:text-base font-medium tracking-wide leading-relaxed opacity-80">
+                Siziň ygtybarly UC dükanyňyz. Ähli amallar awtomatiki we 5 minut içinde hasabyňyzda.
             </p>
-            <div class="flex flex-wrap justify-center gap-6">
-                <a href="#market" class="btn-gradient px-10 py-4 rounded-xl shadow-xl flex items-center gap-3">
-                    <i class="fa-solid fa-fire"></i> UC Satyn Al
-                </a>
-                <div class="glass-card px-8 py-4 rounded-xl flex items-center gap-3">
-                    <i class="fa-solid fa-shield-check text-blue-500 text-xl"></i>
-                    <span class="text-xs font-bold uppercase tracking-widest">100% Garantiýaly</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </header>
 
-    <section id="stats" class="py-20 max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div class="glass-card p-8 rounded-3xl text-center stat-card">
-            <div class="text-4xl font-game font-black text-white mb-2">15K+</div>
-            <div class="text-[10px] text-yellow-500 uppercase font-bold tracking-widest">Satuwlar</div>
-        </div>
-        <div class="glass-card p-8 rounded-3xl text-center stat-card border-blue-500">
-            <div class="text-4xl font-game font-black text-white mb-2">5dk</div>
-            <div class="text-[10px] text-blue-500 uppercase font-bold tracking-widest">Eltip berme</div>
-        </div>
-        <div class="glass-card p-8 rounded-3xl text-center stat-card border-green-500">
-            <div class="text-4xl font-game font-black text-white mb-2">9.8</div>
-            <div class="text-[10px] text-green-500 uppercase font-bold tracking-widest">Müşderi puany</div>
-        </div>
-        <div class="glass-card p-8 rounded-3xl text-center stat-card border-purple-500">
-            <div class="text-4xl font-game font-black text-white mb-2">7/24</div>
-            <div class="text-[10px] text-purple-500 uppercase font-bold tracking-widest">Goldaw</div>
-        </div>
-    </section>
-
-    <section id="market" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="flex justify-between items-end mb-12 border-l-4 border-yellow-500 pl-6">
-            <div>
-                <h2 class="text-4xl font-game font-black uppercase">UC Market</h2>
-                <p class="text-gray-500 text-xs uppercase tracking-[3px]">Gündeilik täzelenýän bahalar</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-24">
+            <div class="glass-panel p-6 rounded-3xl text-center border-l-4 border-yellow-500">
+                <div class="text-3xl font-game font-black mb-1">15K+</div>
+                <div class="text-[9px] text-gray-500 uppercase font-black tracking-widest">Satuwlar</div>
             </div>
-            <div class="hidden md:block text-right">
-                <span class="text-[10px] text-gray-500 uppercase block">Häzirki nyrh:</span>
-                <span class="text-yellow-500 font-bold">1 USD = 33.20 TRY</span>
+            <div class="glass-panel p-6 rounded-3xl text-center border-l-4 border-blue-500">
+                <div class="text-3xl font-game font-black mb-1">5dk</div>
+                <div class="text-[9px] text-gray-500 uppercase font-black tracking-widest">Eltme</div>
+            </div>
+            <div class="glass-panel p-6 rounded-3xl text-center border-l-4 border-green-500">
+                <div class="text-3xl font-game font-black mb-1">99%</div>
+                <div class="text-[9px] text-gray-500 uppercase font-black tracking-widest">Ynam</div>
+            </div>
+            <div class="glass-panel p-6 rounded-3xl text-center border-l-4 border-purple-500">
+                <div class="text-3xl font-game font-black mb-1">7/24</div>
+                <div class="text-[9px] text-gray-500 uppercase font-black tracking-widest">Goldaw</div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="market">
             <script>
-                const data = [
-                    { uc: "60", price: "40,50", tag: "Täze" },
-                    { uc: "325", price: "202,50", tag: "Iň meşhur", hot: true },
-                    { uc: "660", price: "405,00", tag: "Amatly" },
-                    { uc: "1.800", price: "1.012,50", tag: "Bonusly" },
-                    { uc: "3.850", price: "2.025,00", tag: "VIP" },
-                    { uc: "8.100", price: "4.050,00", tag: "Bestseller", hot: true },
-                    { uc: "16.200", price: "8.100,00", tag: "Pro" },
-                    { uc: "24.300", price: "12.150,00", tag: "Elite" },
-                    { uc: "40.500", price: "20.250,00", tag: "Whale" }
+                const products = [
+                    { uc: "60", price: "40,50", badge: "New" },
+                    { uc: "325", price: "202,50", badge: "Popular", best: true },
+                    { uc: "660", price: "405,00", badge: "Hot" },
+                    { uc: "1.800", price: "1.012,50", badge: "Value" },
+                    { uc: "3.850", price: "2.025,00", badge: "VIP" },
+                    { uc: "8.100", price: "4.050,00", badge: "Best Seller" },
+                    { uc: "16.200", price: "8.100,00", badge: "Mega" },
+                    { uc: "24.300", price: "12.150,00", badge: "Ultra" },
+                    { uc: "40.500", price: "20.250,00", badge: "Legendary" }
                 ];
 
-                document.write(data.map(item => `
-                    <div class="glass-card rounded-[2.5rem] p-10 relative overflow-hidden group">
-                        ${item.hot ? '<div class="absolute -right-12 top-8 bg-yellow-500 text-black font-black py-1 px-12 rotate-45 text-[10px] uppercase shadow-lg">HOT</div>' : ''}
+                document.write(products.map(p => `
+                    <div class="glass-panel rounded-[2.5rem] p-10 card-hover relative group">
+                        ${p.best ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-500 text-black px-6 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl">Iň Köp Satylýan</div>' : ''}
                         
-                        <div class="mb-6 text-center">
-                            <span class="text-[9px] font-bold text-yellow-500/60 uppercase tracking-[4px] mb-2 block">${item.tag}</span>
-                            <img src="uc.png" class="uc-image group-hover:scale-110 transition duration-500" alt="UC Icon">
+                        <div class="text-center mb-8">
+                            <span class="text-[9px] font-black text-yellow-500/50 uppercase tracking-[5px] mb-4 block">${p.badge}</span>
+                            <div class="relative inline-block">
+                                <img src="uc.png" class="w-24 h-24 object-contain group-hover:scale-110 transition duration-500" alt="UC">
+                                <div class="absolute inset-0 bg-yellow-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition"></div>
+                            </div>
                         </div>
 
-                        <div class="space-y-2 mb-8 text-center">
-                            <h3 class="text-3xl font-game font-black text-white">${item.uc}</h3>
-                            <p class="text-gray-400 text-xs uppercase tracking-widest font-bold">PUBG Mobile UC</p>
+                        <div class="space-y-2 mb-10 text-center">
+                            <h3 class="text-3xl font-game font-black text-white">${p.uc} PUBG UC</h3>
+                            <p class="text-gray-500 text-xs font-bold uppercase tracking-widest italic">Global Instant Delivery</p>
                         </div>
 
-                        <div class="flex justify-between items-center bg-black/30 p-4 rounded-2xl mb-8 border border-white/5">
-                            <span class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Baha:</span>
-                            <span class="text-2xl font-black text-white tracking-tighter">₺${item.price}</span>
+                        <div class="bg-black/30 rounded-2xl p-4 flex justify-between items-center mb-8 border border-white/5">
+                            <span class="text-[10px] text-gray-500 font-black uppercase">Baha:</span>
+                            <span class="text-3xl font-black text-white tracking-tighter">₺${p.price}</span>
                         </div>
 
-                        <a href="https://wa.me/905016873001?text=Salam DostlukPubgUcShop, men ${item.uc} UC almak isleýärin." 
-                           class="btn-gradient w-full py-5 rounded-2xl flex items-center justify-center gap-4 group-hover:shadow-[0_0_30px_rgba(251,191,36,0.3)]">
-                            <i class="fa-solid fa-shopping-cart"></i>
+                        <button onclick="startTransaction('${p.uc}', '${p.price}')" class="btn-master w-full py-5 rounded-2xl flex items-center justify-center gap-4 group">
+                            <i class="fa-solid fa-cart-shopping text-lg group-hover:animate-bounce"></i>
                             SATIN AL
-                        </a>
-
-                        <ul class="mt-8 space-y-3">
-                            <li class="flex items-center gap-3 text-[10px] text-gray-500 uppercase font-bold">
-                                <i class="fa-solid fa-check text-green-500"></i> ID arkaly eltme
-                            </li>
-                            <li class="flex items-center gap-3 text-[10px] text-gray-500 uppercase font-bold">
-                                <i class="fa-solid fa-check text-green-500"></i> Global hasaplara degişli
-                            </li>
-                        </ul>
+                        </button>
                     </div>
                 `).join(''));
             </script>
         </div>
-    </section>
+    </main>
 
-    <section class="py-20 bg-black/20">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-center font-game text-4xl font-black mb-16 uppercase">Nähili işleýär?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="text-center space-y-6">
-                    <div class="w-20 h-20 bg-yellow-500 rounded-full mx-auto flex items-center justify-center text-black text-3xl font-black shadow-2xl">1</div>
-                    <h4 class="font-bold uppercase tracking-widest">Paketi Saýlaň</h4>
-                    <p class="text-gray-500 text-sm">Özüňize amatly bolan UC mukdaryny saýlap "Satin Al" düwmesine basyň.</p>
+    <div id="paymentOverlay">
+        <div class="terminal-box glass-panel shadow-2xl">
+            <div class="p-8 border-b border-white/5 flex justify-between items-center bg-yellow-500/5">
+                <div>
+                    <h3 class="font-game text-xl text-yellow-500 uppercase leading-none">Töleg Terminaly</h3>
+                    <p class="text-[10px] text-gray-500 uppercase font-bold mt-1 tracking-widest">Security Protocol v2.6</p>
                 </div>
-                <div class="text-center space-y-6">
-                    <div class="w-20 h-20 bg-blue-500 rounded-full mx-auto flex items-center justify-center text-white text-3xl font-black shadow-2xl">2</div>
-                    <h4 class="font-bold uppercase tracking-widest">ID Maglumatyny Beriň</h4>
-                    <p class="text-gray-500 text-sm">WhatsApp arkaly PUBG ID-ňizi we oýundaky adyňyzy operatorymyza ugradyň.</p>
+                <button onclick="closeTerminal()" class="w-10 h-10 rounded-full hover:bg-white/5 flex items-center justify-center text-gray-500 transition">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="p-8 space-y-8">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 bg-black/40 p-5 rounded-3xl border border-white/5">
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500">
+                            <i class="fa-solid fa-user-tie text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase font-black tracking-widest">Alyjynyň Ady</p>
+                            <p class="text-white font-bold text-sm">AMAN HAYITMURADOV</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-black/40 p-5 rounded-3xl border border-white/5 relative group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500">
+                                <i class="fa-solid fa-building-columns text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-[10px] text-gray-500 uppercase font-black tracking-widest">IBAN Nomer</p>
+                                <p id="ibanValue" class="text-yellow-500 font-mono text-xs font-bold break-all tracking-tighter">TR91 0015 7000 0000 0201 1511 63</p>
+                            </div>
+                        </div>
+                        <button onclick="copyIban()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/5 hover:bg-white/10 w-10 h-10 rounded-xl flex items-center justify-center text-gray-400 transition">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="text-center space-y-6">
-                    <div class="w-20 h-20 bg-green-500 rounded-full mx-auto flex items-center justify-center text-white text-3xl font-black shadow-2xl">3</div>
-                    <h4 class="font-bold uppercase tracking-widest">UC Hasabyňyzda</h4>
-                    <p class="text-gray-500 text-sm">Töleg tassyklanandan soňra 5 minut içinde UC-lar hasabyňyza geçýär.</p>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-[10px] text-gray-400 uppercase font-black tracking-[3px] mb-3 block ml-2">Müşderi PUBG ID</label>
+                        <input type="number" id="playerID" placeholder="Meselem: 512345678" 
+                               class="custom-input w-full py-5 px-6 rounded-2xl text-xl font-game tracking-widest">
+                    </div>
+                    
+                    <div id="summaryBox" class="p-4 rounded-2xl bg-white/5 border border-white/5 flex justify-between items-center italic">
+                        <span class="text-xs text-gray-500 font-bold uppercase">Saýlanan:</span>
+                        <span class="text-sm text-white font-black"><span id="summUC">0</span> UC - ₺<span id="summPrice">0</span></span>
+                    </div>
                 </div>
+
+                <button onclick="executePayment()" id="payBtn" class="btn-master w-full py-5 rounded-3xl flex items-center justify-center gap-4 text-sm tracking-[2px]">
+                    <i class="fa-solid fa-shield-check text-lg"></i>
+                    <span>TÖLEG ETDIM</span>
+                </button>
+            </div>
+            
+            <div class="p-6 bg-black/20 text-center border-t border-white/5">
+                <p class="text-[9px] text-gray-600 uppercase font-black tracking-[4px]">Verified Security Gateway</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="faq" class="py-20 max-w-4xl mx-auto px-6">
-        <h2 class="text-center font-game text-4xl font-black mb-16 uppercase italic">Sorag-Jogap</h2>
-        <div class="space-y-4">
-            <details class="glass-card p-6 rounded-2xl cursor-pointer group">
-                <summary class="font-bold text-sm uppercase tracking-widest flex justify-between items-center list-none">
-                    UC haçan geler?
-                    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
-                </summary>
-                <p class="mt-4 text-gray-500 text-sm leading-relaxed">Töleg tassyklanandan soňra adatça 1-5 minut aralygynda eltip berýäris. Iň uzak wagt 15 minut bolup biler.</p>
-            </details>
-            <details class="glass-card p-6 rounded-2xl cursor-pointer group">
-                <summary class="font-bold text-sm uppercase tracking-widest flex justify-between items-center list-none">
-                    Meniň hasabym ban ediler mi?
-                    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
-                </summary>
-                <p class="mt-4 text-gray-500 text-sm leading-relaxed">Ýok, biz resmi Midasbuy we Razer Gold hyzmatdaşlary arkaly amala aşyrýarys. Şonuň üçin 100% ygtybarlydyr.</p>
-            </details>
-            <details class="glass-card p-6 rounded-2xl cursor-pointer group">
-                <summary class="font-bold text-sm uppercase tracking-widest flex justify-between items-center list-none">
-                    Haýsy töleg görnüşleri bar?
-                    <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
-                </summary>
-                <p class="mt-4 text-gray-500 text-sm leading-relaxed">Türkiýe üçin IBAN/Papara, Türkmenistan üçin ýörite amallar arkaly kabul edýäris.</p>
-            </details>
-        </div>
-    </section>
-
-    <footer class="bg-black/50 pt-20 pb-10 border-t border-white/10">
+    <footer class="pt-20 pb-10 border-t border-white/5 bg-black/40">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
             <div class="space-y-6">
                 <div class="flex items-center gap-4">
                     <div class="bg-yellow-500 p-2 rounded-lg"><i class="fa-solid fa-bolt text-black text-xl"></i></div>
                     <span class="font-game text-xl font-black text-yellow-500">DOSTLUKPUBGUCSHOP</span>
                 </div>
-                <p class="text-gray-500 text-sm">Oýun dünýäsindäki iň ýakyn dostuňyz. Amatly baha, çalt hyzmat.</p>
-                <div class="flex gap-4 text-2xl">
-                    <a href="#" class="text-gray-600 hover:text-yellow-500 transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-yellow-500 transition"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-yellow-500 transition"><i class="fa-brands fa-telegram"></i></a>
-                </div>
+                <p class="text-gray-500 text-sm leading-relaxed">Türkiýe we Türkmenistan bazarynda iň ýokary hilli we amatly hyzmatlary hödürleýäris.</p>
             </div>
             
             <div class="space-y-6">
-                <h5 class="font-game text-sm text-white uppercase tracking-widest">Çalt Linkler</h5>
-                <ul class="space-y-3 text-gray-500 text-sm font-bold uppercase tracking-widest">
-                    <li><a href="#home" class="hover:text-yellow-500 transition">Baş Sahypa</a></li>
-                    <li><a href="#market" class="hover:text-yellow-500 transition">UC Market</a></li>
-                    <li><a href="#faq" class="hover:text-yellow-500 transition">Söwda Şertleri</a></li>
-                </ul>
+                <h4 class="font-game text-sm text-white uppercase tracking-widest">Support</h4>
+                <div class="flex flex-col gap-4 text-gray-500 text-sm font-bold">
+                    <a href="https://wa.me/905016873001" class="hover:text-yellow-500 transition flex items-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i> Canly Goldaw
+                    </a>
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-clock text-blue-500"></i> 7/24 Aktiw</span>
+                </div>
             </div>
 
             <div class="space-y-6">
-                <h5 class="font-game text-sm text-white uppercase tracking-widest">Töleg Görnüşleri</h5>
-                <div class="flex flex-wrap gap-4 text-3xl text-gray-700">
+                <h4 class="font-game text-sm text-white uppercase tracking-widest">Payments</h4>
+                <div class="flex flex-wrap gap-4 text-3xl text-gray-700 opacity-50">
                     <i class="fa-brands fa-cc-visa"></i>
                     <i class="fa-brands fa-cc-mastercard"></i>
                     <i class="fa-solid fa-building-columns"></i>
-                    <i class="fa-solid fa-wallet"></i>
                 </div>
             </div>
         </div>
+        
         <div class="text-center border-t border-white/5 pt-10">
-            <p class="text-[10px] text-gray-600 uppercase tracking-[5px] font-black">
-                © 2026 DOSTLUKPUBGUCSHOP. BÄSDEŞSIZ DIZAÝN WE HYZMAT.
+            <p class="text-[10px] text-gray-700 font-black uppercase tracking-[5px]">
+                © 2026 DOSTLUKPUBGUCSHOP. ALL RIGHTS RESERVED.
             </p>
         </div>
     </footer>
 
-</body>
-</html>
+    <script>
+        let selectedUC = "";
+        let selectedPrice = "";
+
+        function startTransaction(uc, price) {
+            selectedUC = uc;
+            selectedPrice = price;
+            document.getElementById('summUC').innerText = uc;
+            document.getElementById('summPrice').innerText = price;
+            document.getElementById('paymentOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTerminal() {
+            document.getElementById('paymentOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function copyIban() {
+            const iban = "TR910015700000000201151163";
+            navigator.clipboard.writeText(iban);
+            
+            const btn = document.querySelector('.terminal-box button i.fa-copy');
+            btn.className = "fa-solid fa-check text-green-500";
+            setTimeout(() => btn.className = "fa-solid fa-copy", 2000);
+        }
+
+        function executePayment() {
+            const playerID = document.getElementById('playerID').value;
+            const btn = document.getElementById('payBtn');
+
+            if(!playerID || playerID.length < 5) {
+                alert("Haýyş, dogry PUBG ID belgiňizi ýazyň!");
+                return;
+            }
+
+            // Loading state
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loader"></span> Garaşyň...';
+
+            setTimeout(() => {
+                const message = `Salam DostlukPubgUcShop!%0A%0A✅ *TÖLEG ETDIM*%0A━━━━━━━━━━━━━━━%0A📦 Paket: *${selectedUC} UC*%0A💰 Baha: *₺${selectedPrice}*%0A🆔 Player ID: *${playerID}*%0A━━━━━━━━━━━━━━━%0AÇek aşakda ugradylýar...`;
+                const waUrl = `https://wa.me/905016873001?text=${message}`;
+                window.open(waUrl, '_blank');
+                
+                // Reset button
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-shield-check text-lg"></i> TÖLEG ETDIM';
+                closeTerminal();
+            }, 1000);
+        }
+
+        // Close on overlay click
+        d
