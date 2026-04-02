@@ -16,7 +16,7 @@
         body { background: var(--dark-bg); color: #f8fafc; overflow-x: hidden; }
         .font-game { font-family: 'Orbitron', sans-serif; }
 
-        /* Pro Max Card Design */
+        /* Card Design */
         .uc-card {
             background: linear-gradient(145deg, #1e293b, #0f172a);
             border-radius: 2.5rem;
@@ -81,20 +81,6 @@
         <div id="market" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"></div>
     </main>
 
-    <section class="py-20 px-8 max-w-4xl mx-auto border-t border-white/5">
-        <h3 class="font-game text-xl text-center text-yellow-500 mb-10 italic uppercase">Köp Soralýan Soraglar</h3>
-        <div class="space-y-4">
-            <div class="bg-white/5 p-6 rounded-2xl border border-white/5">
-                <p class="text-yellow-500 font-bold mb-1 uppercase text-xs text-sm">1. UC näçe wagtda gelýär?</p>
-                <p class="text-gray-400 text-sm">Töleg tassyklanyp, 5-15 minudyň dowamynda hesabyňyza geçirilýär.</p>
-            </div>
-            <div class="bg-white/5 p-6 rounded-2xl border border-white/5">
-                <p class="text-yellow-500 font-bold mb-1 uppercase text-xs text-sm">2. ID belgiňiz dogry bolmalymy?</p>
-                <p class="text-gray-400 text-sm">Hawa, ID belgiňizi barlaň! Ýalňyş ýazsaňyz yzyna gaýtaryp bolmaýar.</p>
-            </div>
-        </div>
-    </section>
-
     <div id="paymentModal">
         <div class="terminal">
             <div class="flex justify-between items-center mb-8">
@@ -103,14 +89,14 @@
             </div>
             
             <div class="space-y-4">
-                <div class="copy-box" onclick="copyText('AMAN HAYITMURADOV', 'Ady nusgalandy!')">
+                <div class="copy-box" onclick="copyText('AMAN HAYITMURADOV', 'Adyňyz nusgalandy!')">
                     <span class="copy-label">Resmi Satyjy:</span>
                     <p class="text-white font-black tracking-widest uppercase">AMAN HAYITMURADOV</p>
                 </div>
 
-                <div class="copy-box" onclick="copyText('TR00 0000 0000 0000 0000 0000 00', 'IBAN nusgalandy!')">
+                <div class="copy-box" onclick="copyText('TR91 0015 7000 0000 0201 1511 63', 'Täze IBAN nusgalandy!')">
                     <span class="copy-label">IBAN Belgi (Töleg üçin):</span>
-                    <p class="text-yellow-500 font-bold text-sm">TR00 0000 0000 0000 0000 0000 00</p>
+                    <p class="text-yellow-500 font-bold text-sm">TR91 0015 7000 0000 0201 1511 63</p>
                 </div>
 
                 <div class="py-2"></div>
@@ -123,7 +109,6 @@
     </div>
 
     <script>
-        // Siziň ýüklän suratyňyzyň salgysy
         const ucImg = "https://raw.githubusercontent.com/DostlukPubgUc/Pubgucshop/main/516479509_1314959147297515_1216252998592852072_n.png";
 
         const inventory = [
@@ -136,7 +121,7 @@
         inventory.forEach(item => {
             market.innerHTML += `
                 <div class="uc-card">
-                    <img src="${ucImg}" alt="UC" class="w-32 mx-auto mb-6 filter drop-shadow-lg" onerror="this.src='https://raw.githubusercontent.com/DostlukPubgUc/Pubgucshop/main/uc.png'">
+                    <img src="${ucImg}" alt="UC" class="w-32 mx-auto mb-6" onerror="this.src='https://raw.githubusercontent.com/DostlukPubgUc/Pubgucshop/main/uc.png'">
                     <h4 class="font-game text-2xl font-black text-white mb-6 italic uppercase">${item.uc} UC</h4>
                     <div class="bg-black/40 p-4 rounded-2xl mb-8 border border-white/5 flex justify-between items-center">
                         <span class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Baha:</span>
@@ -151,7 +136,6 @@
         function openPay(uc, p) { currentUC = uc; currentPrice = p; document.getElementById('paymentModal').style.display = 'flex'; }
         function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
 
-        // Nusgalamak funksiýasy
         function copyText(text, message) {
             navigator.clipboard.writeText(text).then(() => {
                 alert(message);
