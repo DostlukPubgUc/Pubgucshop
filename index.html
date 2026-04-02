@@ -16,15 +16,14 @@
         body { background: var(--dark); color: #f8fafc; overflow-x: hidden; }
         .font-game { font-family: 'Orbitron', sans-serif; }
         
-        /* Github elementlerini gizlemek */
         header, footer, .github-corner, .fork-me { display: none !important; }
 
         .uc-card { background: #0f172a; border-radius: 2rem; border: 1px solid rgba(255, 255, 255, 0.03); transition: 0.3s; position: relative; overflow: hidden; }
         .uc-card:hover { border-color: var(--gold); transform: translateY(-5px); }
         
-        /* Surat bölüminiň dizaýny */
-        .uc-img-container { width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 1rem; border-radius: 1.5rem; background: rgba(255,255,255,0.02); }
-        .uc-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        /* Surat konteýneri */
+        .uc-img-container { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 1rem; border-radius: 1.5rem; background: rgba(255,255,255,0.02); }
+        .uc-img { max-width: 90%; max-height: 90%; object-fit: contain; filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.2)); }
 
         #paymentModal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }
         .terminal { width: 100%; max-width: 450px; background: #0f172a; border: 1px solid var(--gold); border-radius: 2.5rem; padding: 30px; position: relative; }
@@ -71,14 +70,14 @@
                 <button onclick="closeModal()"><i class="fa-solid fa-xmark text-xl text-gray-500"></i></button>
             </div>
             <div class="space-y-3">
-                <div class="bg-black/40 p-4 rounded-2xl border border-white/5">
+                <div class="bg-black/40 p-4 rounded-2xl border border-white/5 text-left">
                     <p class="text-[8px] text-gray-500 uppercase mb-1">Satyjy:</p>
                     <div class="flex justify-between items-center">
                         <p id="tName" class="text-xs font-black text-white uppercase">AMAN HAYITMURADOV</p>
                         <button onclick="copyToClipboard('tName')" class="text-yellow-500 text-[10px] font-bold">GÖÇÜR</button>
                     </div>
                 </div>
-                <div class="bg-black/40 p-4 rounded-2xl border border-white/5">
+                <div class="bg-black/40 p-4 rounded-2xl border border-white/5 text-left">
                     <p class="text-[8px] text-gray-500 uppercase mb-1">IBAN:</p>
                     <div class="flex justify-between items-center">
                         <p id="tIban" class="text-xs font-mono font-bold text-yellow-500">TR91 0015 7000 0000 0201 1511 63</p>
@@ -86,7 +85,7 @@
                     </div>
                 </div>
                 <input type="number" id="playerID" placeholder="Player ID ýazyň" class="w-full bg-black border border-white/10 text-white p-4 rounded-xl text-center font-game text-lg my-4 focus:border-yellow-500 outline-none transition">
-                <button onclick="sendWhatsApp()" class="w-full bg-yellow-500 text-black font-black py-4 rounded-xl uppercase text-xs shadow-lg shadow-yellow-500/20">TÖLEG ETDIM</button>
+                <button onclick="sendWhatsApp()" class="w-full bg-yellow-500 text-black font-black py-4 rounded-xl uppercase text-xs shadow-lg shadow-yellow-500/20 active:scale-95 transition">TÖLEG ETDIM</button>
             </div>
         </div>
     </div>
@@ -96,12 +95,13 @@
     </footer>
 
     <script>
+        // Suratyň anyk açylmagy üçin GitHub Pages salgysyny ulanýarys
+        const imageUrl = "https://raw.githubusercontent.com/DostlukPubgUc/Pubgucshop/main/uc.png";
+
         const inventory = [
-            { uc: "60", price: "40,50", img: "uc.png" }, { uc: "325", price: "202,50", img: "uc.png" }, 
-            { uc: "660", price: "405,00", img: "uc.png" }, { uc: "1.800", price: "1.012,50", img: "uc.png" }, 
-            { uc: "3.850", price: "2.025,00", img: "uc.png" }, { uc: "8.100", price: "4.050,00", img: "uc.png" },
-            { uc: "16.200", price: "8.100,00", img: "uc.png" }, { uc: "24.300", price: "12.150,00", img: "uc.png" }, 
-            { uc: "40.500", price: "20.250,00", img: "uc.png" }
+            { uc: "60", price: "40,50" }, { uc: "325", price: "202,50" }, { uc: "660", price: "405,00" },
+            { uc: "1.800", price: "1.012,50" }, { uc: "3.850", price: "2.025,00" }, { uc: "8.100", price: "4.050,00" },
+            { uc: "16.200", price: "8.100,00" }, { uc: "24.300", price: "12.150,00" }, { uc: "40.500", price: "20.250,00" }
         ];
 
         const market = document.getElementById('market');
@@ -109,7 +109,7 @@
             market.innerHTML += `
                 <div class="uc-card p-8 text-center animate__animated animate__fadeInUp">
                     <div class="uc-img-container">
-                        <img src="${item.img}" alt="UC" class="uc-img" onerror="this.src='https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/gem-icon.png'">
+                        <img src="${imageUrl}" alt="UC" class="uc-img" onerror="this.src='https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/gem-icon.png'">
                     </div>
                     <h4 class="font-game text-xl font-bold text-white mb-6">${item.uc} PUBG UC</h4>
                     <div class="flex justify-between items-center bg-black/20 p-3 rounded-xl mb-6">
