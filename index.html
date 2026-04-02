@@ -17,7 +17,7 @@
         body { background: var(--dark-bg); color: #f8fafc; overflow-x: hidden; }
         .font-game { font-family: 'Orbitron', sans-serif; }
 
-        /* Internet Kesilse Görünjek Gorag Ekrany */
+        /* Internet Kesilse Gorag */
         #offline-overlay {
             display: none; position: fixed; inset: 0; z-index: 10000;
             background: #000; flex-direction: column; align-items: center; justify-content: center; text-align: center;
@@ -31,15 +31,18 @@
 
         #paymentModal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }
         .terminal-content { width: 100%; max-width: 480px; background: #0f172a; border: 1px solid var(--gold); border-radius: 3rem; padding: 35px; }
-        .faq-item { background: #0f172a; border: 1px solid rgba(255,255,255,0.05); border-radius: 1.5rem; padding: 20px; margin-bottom: 12px; }
+        
+        /* FAQ Style */
+        .faq-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 1.5rem; padding: 20px; margin-bottom: 12px; transition: 0.3s; }
+        .faq-item:hover { border-color: var(--gold); background: rgba(255,255,255,0.04); }
     </style>
 </head>
 <body>
 
     <div id="offline-overlay">
         <i class="fa-solid fa-wifi-slash text-6xl text-red-500 mb-6 animate-pulse"></i>
-        <h2 class="font-game text-2xl text-white mb-4 italic uppercase">Internet Kesildi!</h2>
-        <p class="text-gray-400 max-w-xs mx-auto">Howpsuzlyk sebäpli internet bolmasa programma işlemeli däldir. Internetiňizi barlaň.</p>
+        <h2 class="font-game text-2xl text-white mb-4 italic uppercase">Baglanyşyk Ýok</h2>
+        <p class="text-gray-400 max-w-xs mx-auto">Internet kesildi. Howpsuzlyk üçin sahypa wagtlaýyn ýapyldy.</p>
     </div>
 
     <nav class="fixed top-0 w-full z-[1000] glass-nav py-5 px-6">
@@ -48,7 +51,7 @@
                 <div class="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center">
                     <i class="fa-solid fa-bolt text-black text-xl"></i>
                 </div>
-                <h1 class="font-game text-xl font-black text-yellow-500 tracking-tighter leading-none">DOSTLUK</h1>
+                <h1 class="font-game text-xl font-black text-yellow-500 tracking-tighter uppercase leading-none">Dostluk</h1>
             </div>
             <div class="op-online">
                 <span class="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></span>
@@ -67,19 +70,36 @@
             </div>
     </section>
 
-    <section class="py-20 px-6 border-t border-white/5">
+    <section class="py-20 px-6 border-t border-white/5 bg-black/20">
         <div class="max-w-4xl mx-auto">
-            <h3 class="font-game text-2xl text-white text-center mb-12 italic uppercase">Köp Berilýän Soraglar</h3>
+            <h3 class="font-game text-2xl text-white text-center mb-12 italic uppercase">Köp Berilýän Soraglar (FAQ)</h3>
+            
             <div class="faq-item">
-                <h4 class="text-yellow-500 font-bold mb-2"><i class="fa-solid fa-circle-check mr-2"></i> UC-lar haçan hasaba geçýär?</h4>
-                <p class="text-gray-400 text-sm">Töleg tassyklanyndan soň 5 minutda awtomatiki geçer.</p>
+                <h4 class="text-yellow-500 font-bold mb-2 flex items-center"><i class="fa-solid fa-circle-question mr-3"></i> UC-lar haçan hasaba geçýär?</h4>
+                <p class="text-gray-400 text-sm">Ähli amallar awtomatiki ulgam arkaly tölanyňyzdan soň ortaça 5 minutda hasabyňyza geçirilýär.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4 class="text-yellow-500 font-bold mb-2 flex items-center"><i class="fa-solid fa-shield-halved mr-3"></i> Sistemanyňyz ygtybarlymy?</h4>
+                <p class="text-gray-400 text-sm">Hawa, biz 2026-njy ýylyň Verified Global Reseller statusyna eýe bolup, ähli amallar 100% garantiýalydyr.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4 class="text-yellow-500 font-bold mb-2 flex items-center"><i class="fa-solid fa-headset mr-3"></i> Problem ýüze çyksa näme etmeli?</h4>
+                <p class="text-gray-400 text-sm">Biziň operatorymyz 7/24 onlaýn bolup, islendik wagt WhatsApp arkaly goldaw berýär.</p>
+            </div>
+
+            <div class="mt-16 flex justify-center gap-8 opacity-20 grayscale">
+                <i class="fa-brands fa-cc-visa text-4xl text-white"></i>
+                <i class="fa-brands fa-cc-mastercard text-4xl text-white"></i>
+                <i class="fa-solid fa-lock text-3xl text-white"></i>
             </div>
         </div>
     </section>
 
     <div id="paymentModal">
         <div class="terminal-content animate__animated animate__zoomIn">
-            <div class="flex justify-between items-center mb-8">
+            <div class="flex justify-between items-center mb-8 border-b border-white/5 pb-4">
                 <h3 class="font-game text-xl text-yellow-500 italic uppercase">Töleg Terminaly</h3>
                 <button onclick="closeModal()"><i class="fa-solid fa-xmark text-2xl text-gray-500"></i></button>
             </div>
@@ -92,19 +112,20 @@
                     <div><p class="text-[9px] text-gray-500 uppercase">IBAN:</p><p id="tIban" class="text-xs font-mono font-bold text-yellow-500">TR91 0015 7000 0000 0201 1511 63</p></div>
                     <button onclick="copy('tIban')" class="text-yellow-500 text-[10px] font-bold">GÖÇÜR</button>
                 </div>
-                <input type="number" id="playerID" placeholder="Player ID ýazyň" class="w-full bg-black border border-white/10 text-white p-5 rounded-2xl text-center font-game text-xl my-6">
+                <input type="number" id="playerID" placeholder="ID belgiňizi ýazyň" class="w-full bg-black border border-white/10 text-white p-5 rounded-2xl text-center font-game text-xl my-6 focus:border-yellow-500 outline-none transition">
                 <button onclick="sendWA()" class="w-full bg-yellow-500 text-black font-black py-5 rounded-2xl uppercase tracking-widest active:scale-95 transition shadow-lg shadow-yellow-500/20">TÖLEG ETDIM</button>
             </div>
         </div>
     </div>
 
-    <footer class="py-12 border-t border-white/5 text-center">
+    <footer class="py-12 border-t border-white/5 text-center bg-black">
         <p class="text-[11px] text-gray-800 font-black tracking-[10px] uppercase">DOSTLUKPUBGUCSHOP GLOBAL 2026</p>
+        <p class="text-[9px] text-gray-900 mt-4 uppercase tracking-widest italic">Aman Hayitmuradow Official Merchant</p>
     </footer>
 
     <script>
-        // INTERNET CONNECTION PROTECTION
-        function checkConnection() {
+        // Connection Check
+        function checkStatus() {
             if (!navigator.onLine) {
                 document.getElementById('offline-overlay').style.display = 'flex';
                 document.body.style.overflow = 'hidden';
@@ -113,11 +134,10 @@
                 document.body.style.overflow = 'auto';
             }
         }
-
-        window.addEventListener('online', checkConnection);
-        window.addEventListener('offline', checkConnection);
-        setInterval(checkConnection, 2000); // Her 2 sekuntdan barlaýar
-        checkConnection();
+        window.addEventListener('online', checkStatus);
+        window.addEventListener('offline', checkStatus);
+        setInterval(checkStatus, 3000);
+        checkStatus();
 
         const inventory = [
             { uc: "60", price: "40,50" },
