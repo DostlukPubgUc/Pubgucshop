@@ -2,296 +2,242 @@
 <html lang="tk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DostlukPubgUcShop | Professional Store v3.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DostlukPubgUcShop | Professional Gaming Solutions</title>
     
+    <meta name="description" content="Türkiýe we Türkmenistan üçin iň çalt UC hyzmaty.">
+    <meta name="theme-color" content="#0f172a">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;600;700&display=swap');
 
+        /* Custom Variables */
         :root {
-            --primary: #fbbf24;
-            --secondary: #1e293b;
-            --glass: rgba(15, 23, 42, 0.98);
-            --neon-blue: #3b82f6;
-            --neon-green: #22c55e;
+            --primary-glow: #fbbf24;
+            --secondary-bg: #0f172a;
+            --accent-blue: #3b82f6;
+            --success: #22c55e;
+            --card-glass: rgba(30, 41, 59, 0.7);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: #020617;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(251, 191, 36, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
-            color: #f8fafc;
-            font-family: 'Rajdhani', sans-serif;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
+        /* Global Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
+        body { background: #020617; color: #f8fafc; overflow-x: hidden; }
         .font-game { font-family: 'Orbitron', sans-serif; }
 
-        /* Professional Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
+        /* Typography */
+        .glitch-text { text-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
+        .hero-title { font-size: clamp(3rem, 10vw, 7rem); line-height: 0.85; letter-spacing: -4px; font-weight: 900; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--primary-glow); border-radius: 10px; }
 
         /* Advanced UI Elements */
-        .glass-panel {
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 9vw, 6rem);
-            line-height: 0.9;
-            letter-spacing: -3px;
-            text-transform: uppercase;
-            font-weight: 900;
-            font-style: italic;
-        }
-
-        .text-glow {
-            text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
-        }
+        .glass-header { background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .neon-border { border: 1px solid rgba(251, 191, 36, 0.1); transition: 0.4s ease; }
+        .neon-border:hover { border-color: var(--primary-glow); box-shadow: 0 0 25px rgba(251, 191, 36, 0.15); }
 
         /* Card Mechanics */
-        .uc-card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.8));
-            border-radius: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+        .product-card { background: var(--card-glass); border-radius: 3rem; position: relative; overflow: hidden; }
+        .product-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, var(--primary-glow));
+            animation: rotate 6s linear infinite; opacity: 0; transition: 0.5s;
         }
+        .product-card:hover::before { opacity: 0.2; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        .uc-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: var(--primary);
-            box-shadow: 0 0 40px rgba(251, 191, 36, 0.1);
-        }
-
-        .uc-image-container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .uc-glow-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
-            z-index: -1;
-            border-radius: 50%;
-        }
-
-        /* Buttons */
-        .btn-master {
+        /* Button Effects */
+        .btn-action {
             background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-            color: #000;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #000; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        .btn-action:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 30px rgba(217, 119, 6, 0.4); }
 
-        .btn-master:hover {
-            filter: brightness(1.2);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.4);
-        }
-
-        /* Payment Terminal */
+        /* Terminal System */
         #paymentModal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.96); backdrop-filter: blur(15px);
+            align-items: center; justify-content: center; padding: 15px;
         }
+        .modal-body { width: 100%; max-width: 520px; background: #111827; border: 1px solid #374151; border-radius: 3.5rem; }
+        
+        .copy-pill {
+            background: #030712; border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px; border-radius: 1.5rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .copy-trigger { color: var(--primary-glow); cursor: pointer; padding: 8px; border-radius: 10px; transition: 0.2s; }
+        .copy-trigger:active { background: rgba(251, 191, 36, 0.1); transform: scale(0.9); }
 
-        .modal-content {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 3rem;
-            border: 2px solid var(--primary);
-            animation: modalSlideUp 0.5s ease-out;
+        /* Custom Input */
+        .id-field {
+            background: #000; border: 1.5px solid #374151; color: #fff;
+            padding: 22px; border-radius: 1.5rem; width: 100%; text-align: center;
+            font-size: 1.3rem; font-family: 'Orbitron', sans-serif; transition: 0.3s;
         }
+        .id-field:focus { border-color: var(--primary-glow); outline: none; box-shadow: 0 0 15px rgba(251, 191, 36, 0.1); }
 
-        @keyframes modalSlideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .copy-box {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 18px;
-            border-radius: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .custom-input {
-            background: #000;
-            border: 1px solid var(--primary);
-            color: #fff;
-            padding: 20px;
-            border-radius: 1.5rem;
-            width: 100%;
-            text-align: center;
-            font-size: 1.2rem;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .operator-online {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #22c55e;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 800;
-        }
+        /* Floating Elements */
+        .float-icon { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-[100] px-6 py-5 glass-panel border-b border-white/5">
+    <nav class="fixed top-0 w-full z-[1000] glass-header py-4 px-6 md:px-12">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-yellow-500 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(251,191,36,0.3)]">
+                <div class="w-12 h-12 bg-yellow-500 rounded-2xl flex items-center justify-center shadow-lg shadow-yellow-500/20">
                     <i class="fa-solid fa-bolt-lightning text-black text-2xl"></i>
                 </div>
                 <div>
                     <h1 class="font-game text-xl font-black text-yellow-500 tracking-tighter leading-none">DOSTLUK</h1>
-                    <span class="text-[9px] uppercase tracking-[4px] text-white/40">PUBGUCSHOP</span>
+                    <p class="text-[9px] uppercase tracking-[4px] text-gray-500 mt-1">PubgUcShop Professional</p>
                 </div>
             </div>
-            
-            <div class="operator-online flex items-center gap-2">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></span>
-                ULGAMDA: 7/24
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#market" class="text-xs font-black tracking-widest text-gray-400 hover:text-white transition">MARKET</a>
+                <a href="#stats" class="text-xs font-black tracking-widest text-gray-400 hover:text-white transition">STATUS</a>
+                <div class="h-4 w-[1px] bg-white/10"></div>
+                <div class="flex items-center gap-2 bg-green-500/10 px-4 py-2 rounded-full border border-green-500/20">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] font-black text-green-500 uppercase">System Online</span>
+                </div>
             </div>
+            <button class="md:hidden text-gray-400"><i class="fa-solid fa-bars-staggered text-2xl"></i></button>
         </div>
     </nav>
 
-    <main class="pt-32 pb-24 px-4 max-w-7xl mx-auto">
-        
-        <div class="text-center mb-24">
-            <div class="inline-flex items-center gap-2 bg-white/5 px-4 py-1.5 rounded-full border border-white/10 mb-8">
-                <i class="fa-solid fa-crown text-yellow-500 text-xs"></i>
-                <span class="text-[10px] font-bold uppercase tracking-[4px] text-gray-400">Professional Gaming Store 2026</span>
+    <section class="relative pt-48 pb-32 px-6 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-yellow-500/5 blur-[120px] rounded-full"></div>
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-5 py-2 rounded-full mb-10 animate__animated animate__fadeInDown">
+                <i class="fa-solid fa-shield-halved text-yellow-500 text-xs"></i>
+                <span class="text-[10px] font-black tracking-[3px] text-gray-300 uppercase">Verified Global Reseller 2026</span>
             </div>
             
-            <h2 class="hero-title animate__animated animate__fadeInDown">
-                <span class="text-white block">DOSTLUK</span>
-                <span class="text-yellow-500 text-glow block mt-2">PUBGUCSHOP</span>
+            <h2 class="hero-title glitch-text animate__animated animate__zoomIn">
+                <span class="text-white">DOSTLUK</span><br>
+                <span class="text-yellow-500">PUBGUCSHOP</span>
             </h2>
             
-            <p class="text-gray-400 max-w-lg mx-auto text-sm md:text-base mt-8 leading-relaxed italic">
-                Türkiýe we Türkmenistan üçin iň çalt, iň ygtybarly we iň amatly PUBG Mobile UC hyzmaty. 5 minutda hasabyňyzda!
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl mt-12 leading-relaxed font-light italic">
+                Türkmenistan we Türkiýe üçin iň ygtybarly hyzmat. Ähli amallar awtomatiki we 5 minut içinde hasabyňyzda.
             </p>
 
-            <div class="flex flex-wrap justify-center gap-4 mt-12">
-                <button onclick="scrollToMarket()" class="btn-master px-10 py-5 rounded-2xl text-sm">
-                    <i class="fa-solid fa-fire-flame-curved mr-2"></i> UC SATYN AL
+            <div class="flex flex-col md:flex-row justify-center gap-6 mt-16">
+                <button onclick="document.getElementById('market').scrollIntoView({behavior:'smooth'})" class="btn-action px-12 py-6 rounded-2xl">
+                    <i class="fa-solid fa-cart-arrow-down mr-3"></i> UC SATYN AL
                 </button>
-                <div class="bg-white/5 border border-white/10 px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest flex items-center">
-                    100% GARANTIÝALY
+                <div class="bg-white/5 border border-white/10 px-12 py-6 rounded-2xl flex items-center justify-center gap-4">
+                    <i class="fa-solid fa-check-double text-green-500"></i>
+                    <span class="text-xs font-black tracking-widest uppercase">100% Garantiýaly</span>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-28">
-            <div class="glass-panel p-8 rounded-[2.5rem] text-center border-l-4 border-yellow-500 hover:scale-105 transition">
-                <div class="text-4xl font-game font-black mb-1">15K+</div>
-                <div class="text-[10px] text-gray-500 uppercase font-black tracking-widest">SATUWLAR</div>
+    <section id="market" class="py-24 px-6 bg-[#020617]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+                <div class="mb-8 md:mb-0">
+                    <p class="text-yellow-500 text-xs font-black tracking-[5px] uppercase mb-4">Marketplace</p>
+                    <h3 class="font-game text-4xl font-black italic">POPULÝAR PAKETLER</h3>
+                </div>
+                <div class="flex gap-4">
+                    <div class="bg-white/5 p-4 rounded-2xl border border-white/5"><i class="fa-brands fa-cc-visa text-gray-500 text-xl"></i></div>
+                    <div class="bg-white/5 p-4 rounded-2xl border border-white/5"><i class="fa-brands fa-cc-mastercard text-gray-500 text-xl"></i></div>
+                </div>
             </div>
-            <div class="glass-panel p-8 rounded-[2.5rem] text-center border-l-4 border-blue-500 hover:scale-105 transition">
-                <div class="text-4xl font-game font-black mb-1">5dk</div>
-                <div class="text-[10px] text-gray-500 uppercase font-black tracking-widest">ELTIP BERME</div>
-            </div>
-            <div class="glass-panel p-8 rounded-[2.5rem] text-center border-l-4 border-green-500 hover:scale-105 transition">
-                <div class="text-4xl font-game font-black mb-1">99%</div>
-                <div class="text-[10px] text-gray-500 uppercase font-black tracking-widest">YNAM</div>
-            </div>
-            <div class="glass-panel p-8 rounded-[2.5rem] text-center border-l-4 border-purple-500 hover:scale-105 transition">
-                <div class="text-4xl font-game font-black mb-1">7/24</div>
-                <div class="text-[10px] text-gray-500 uppercase font-black tracking-widest">GOLDAW</div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <script>
+                    const ucInventory = [
+                        { amt: "60", p: "40,50", tag: "NEW", icon: "bolt" },
+                        { amt: "325", p: "202,50", tag: "BEST", icon: "fire", best: true },
+                        { amt: "660", p: "405,00", tag: "HOT", icon: "crown" },
+                        { amt: "1.800", p: "1.012,50", tag: "PRO", icon: "gem" },
+                        { amt: "3.850", p: "2.025,00", tag: "VIP", icon: "star" },
+                        { amt: "8.100", p: "4.050,00", tag: "ULTRA", icon: "diamond" },
+                        { amt: "16.200", p: "8.100,00", tag: "LEGEND", icon: "trophy" },
+                        { amt: "24.300", p: "12.150,00", tag: "MEGA", icon: "shield-heart" },
+                        { amt: "32.400", p: "16.200,00", tag: "TITAN", icon: "dragon" }
+                    ];
+
+                    document.write(ucInventory.map(item => `
+                        <div class="product-card neon-border p-10 group animate__animated animate__fadeInUp">
+                            ${item.best ? '<div class="absolute top-6 right-6 bg-yellow-500 text-black text-[9px] font-black px-4 py-1.5 rounded-full z-10">IŇ KÖP SATYLÝAN</div>' : ''}
+                            <div class="text-center relative mb-12">
+                                <div class="w-32 h-32 bg-yellow-500/5 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-2xl group-hover:bg-yellow-500/10 transition"></div>
+                                <img src="uc.png" class="w-24 h-24 mx-auto float-icon relative z-10 filter drop-shadow-2xl" alt="PUBG UC">
+                            </div>
+                            <div class="space-y-2 mb-10 text-center">
+                                <span class="text-yellow-500 text-[10px] font-black tracking-widest uppercase">${item.tag} EDITION</span>
+                                <h4 class="font-game text-3xl font-black text-white">${item.amt} UC</h4>
+                                <p class="text-gray-500 text-[10px] font-bold tracking-[3px] uppercase">Instant Hasaba Geçiriş</p>
+                            </div>
+                            <div class="bg-black/40 border border-white/5 p-6 rounded-3xl mb-8 flex justify-between items-center px-8">
+                                <span class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Baha</span>
+                                <span class="text-2xl font-black text-white italic">₺${item.p}</span>
+                            </div>
+                            <button onclick="initPayment('${item.amt}', '${item.p}')" class="btn-action w-full py-5 rounded-2xl text-xs">
+                                <i class="fa-solid fa-bag-shopping mr-2"></i> SATYN AL
+                            </button>
+                        </div>
+                    `).join(''));
+                </script>
             </div>
         </div>
-
-        <div id="market" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            </div>
-    </main>
+    </section>
 
     <div id="paymentModal">
-        <div class="modal-content glass-panel p-10">
-            <div class="flex justify-between items-center mb-10">
+        <div class="modal-body p-12 relative animate__animated animate__zoomIn">
+            <div class="flex justify-between items-start mb-12">
                 <div>
-                    <h3 class="font-game text-xl text-yellow-500 italic">TÖLEG TERMINALY</h3>
-                    <p class="text-[10px] text-gray-500 uppercase font-black tracking-widest">Official Merchant Gateway</p>
+                    <h3 class="font-game text-2xl text-yellow-500 italic">TÖLEG TERMINALY</h3>
+                    <p class="text-[9px] text-gray-500 uppercase font-black tracking-[4px] mt-1">Verified Gateway 2026</p>
                 </div>
-                <button onclick="closeModal()" class="w-12 h-12 rounded-full hover:bg-white/5 flex items-center justify-center text-gray-500 transition">
-                    <i class="fa-solid fa-xmark text-2xl"></i>
-                </button>
+                <button onclick="closeModal()" class="text-gray-600 hover:text-white transition"><i class="fa-solid fa-circle-xmark text-3xl"></i></button>
             </div>
 
             <div class="space-y-6">
-                <div class="copy-box">
+                <div class="copy-pill">
                     <div class="flex flex-col">
-                        <span class="text-[9px] text-gray-500 uppercase font-black mb-1">ADY & FAMILIÝASY</span>
-                        <span id="merchantName" class="text-sm font-black text-white uppercase tracking-wider">AMAN HAYITMURADOV</span>
+                        <span class="text-[9px] text-gray-600 uppercase font-black mb-1 tracking-widest">SATYJY MAGLUMATY</span>
+                        <span id="nameCopy" class="text-sm font-black text-white uppercase tracking-wider">AMAN HAYITMURADOV</span>
                     </div>
-                    <button onclick="copyData('merchantName')" class="text-yellow-500 hover:scale-110 transition">
-                        <i class="fa-solid fa-copy"></i>
-                    </button>
+                    <div onclick="executeCopy('nameCopy', 'Ady göçürildi')" class="copy-trigger">
+                        <i class="fa-solid fa-copy text-xl"></i>
+                    </div>
                 </div>
 
-                <div class="copy-box border-dashed border-yellow-500/30">
+                <div class="copy-pill border-dashed border-yellow-500/20">
                     <div class="flex flex-col">
-                        <span class="text-[9px] text-gray-500 uppercase font-black mb-1">IBAN NOMER</span>
-                        <span id="merchantIban" class="text-sm font-mono font-bold text-yellow-500 tracking-tighter">TR91 0015 7000 0000 0201 1511 63</span>
+                        <span class="text-[9px] text-yellow-500/40 uppercase font-black mb-1 tracking-widest">IBAN NOMER</span>
+                        <span id="ibanCopy" class="text-sm font-mono font-bold text-yellow-500 tracking-tighter">TR91 0015 7000 0000 0201 1511 63</span>
                     </div>
-                    <button onclick="copyData('merchantIban')" class="text-yellow-500 hover:scale-110 transition">
-                        <i class="fa-solid fa-copy"></i>
-                    </button>
+                    <div onclick="executeCopy('ibanCopy', 'IBAN göçürildi')" class="copy-trigger">
+                        <i class="fa-solid fa-copy text-xl"></i>
+                    </div>
                 </div>
 
                 <div class="pt-8 border-t border-white/5">
-                    <p class="text-[10px] text-gray-500 text-center uppercase font-black mb-4 tracking-[3px]">PUBG ID BELGIŇIZI ÝAZYŇ</p>
-                    <input type="number" id="playerID" placeholder="Meselem: 51234567" class="custom-input mb-8">
+                    <p class="text-[10px] text-gray-500 text-center uppercase font-black mb-4 tracking-[4px]">PUBG ID BELGIŇIZI ÝAZYŇ</p>
+                    <input type="number" id="targetID" placeholder="Meselem: 51234567" class="id-field mb-8">
                     
-                    <div class="bg-black/50 p-6 rounded-3xl flex justify-between items-center mb-8 italic">
-                        <span class="text-xs text-gray-500 font-black uppercase">SAÝLANAN:</span>
-                        <span class="text-sm font-black text-white"><span id="selUC">0</span> UC — ₺<span id="selPrice">0</span></span>
+                    <div class="bg-black/50 p-6 rounded-3xl flex justify-between items-center mb-10 border border-white/5">
+                        <span class="text-[10px] text-gray-500 font-black uppercase italic">Hasap:</span>
+                        <span class="text-sm font-black text-white italic uppercase"><span id="mUC">0</span> UC — ₺<span id="mPrice">0</span></span>
                     </div>
 
-                    <button onclick="sendWhatsApp()" class="btn-master w-full py-6 rounded-3xl text-sm">
+                    <button onclick="finalSubmit()" class="btn-action w-full py-6 rounded-3xl text-sm">
                         <i class="fa-solid fa-shield-check mr-2"></i> TÖLEG ETDIM
                     </button>
                 </div>
@@ -299,70 +245,44 @@
         </div>
     </div>
 
-    <footer class="py-20 border-t border-white/5 bg-black/40">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="flex justify-center gap-10 mb-12 text-3xl text-gray-700 opacity-50">
-                <i class="fa-brands fa-cc-visa"></i>
-                <i class="fa-brands fa-cc-mastercard"></i>
-                <i class="fa-solid fa-building-columns"></i>
+    <section id="stats" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center p-10 glass-header rounded-[3rem] neon-border">
+                <div class="text-5xl font-game font-black text-white mb-2 tracking-tighter">15K+</div>
+                <div class="text-[10px] text-gray-500 font-black uppercase tracking-widest">SATUWLAR</div>
             </div>
-            <p class="text-[10px] text-gray-600 uppercase font-black tracking-[8px] italic">
-                © 2026 DOSTLUKPUBGUCSHOP. ALL RIGHTS RESERVED.
-            </p>
+            <div class="text-center p-10 glass-header rounded-[3rem] neon-border">
+                <div class="text-5xl font-game font-black text-blue-500 mb-2 tracking-tighter">5dk</div>
+                <div class="text-[10px] text-gray-500 font-black uppercase tracking-widest">ELTIP BERME</div>
+            </div>
+            <div class="text-center p-10 glass-header rounded-[3rem] neon-border">
+                <div class="text-5xl font-game font-black text-green-500 mb-2 tracking-tighter">99%</div>
+                <div class="text-[10px] text-gray-500 font-black uppercase tracking-widest">YNAMLY</div>
+            </div>
+            <div class="text-center p-10 glass-header rounded-[3rem] neon-border">
+                <div class="text-5xl font-game font-black text-purple-500 mb-2 tracking-tighter">7/24</div>
+                <div class="text-[10px] text-gray-500 font-black uppercase tracking-widest">GOLDAW</div>
+            </div>
         </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 text-center">
+        <p class="text-[10px] text-gray-600 font-black uppercase tracking-[10px] mb-8">DostlukPubgUcShop Global</p>
+        <div class="flex justify-center gap-8 mb-12 opacity-30">
+            <i class="fa-brands fa-cc-visa text-3xl"></i>
+            <i class="fa-brands fa-cc-mastercard text-3xl"></i>
+            <i class="fa-solid fa-shield-halved text-3xl"></i>
+        </div>
+        <p class="text-[9px] text-gray-700 uppercase font-bold tracking-[2px]">© 2026 DOSTLUKPUBGUCSHOP. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <a href="https://wa.me/905016873001" target="_blank" class="fixed bottom-8 right-8 w-16 h-16 bg-[#25d366] rounded-full flex items-center justify-center text-white text-3xl shadow-2xl z-[200] hover:scale-110 transition animate-bounce">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
     <script>
-        // Paketler
-        const products = [
-            { uc: "60", price: "40,50", badge: "New" },
-            { uc: "325", price: "202,50", badge: "Popular", best: true },
-            { uc: "660", price: "405,00", badge: "Hot" },
-            { uc: "1.800", price: "1.012,50", badge: "Bonus" },
-            { uc: "3.850", price: "2.025,00", badge: "Value" },
-            { uc: "8.100", price: "4.050,00", badge: "Pro" },
-            { uc: "16.200", price: "8.100,00", badge: "Legend" },
-            { uc: "24.300", price: "12.150,00", badge: "Mega" },
-            { uc: "32.400", price: "16.200,00", badge: "Ultra" },
-            { uc: "40.500", price: "20.250,00", badge: "Titan" }
-        ];
+        let currentAmt = ""; let currentP = "";
 
-        const market = document.getElementById('market');
-        products.forEach(p => {
-            market.innerHTML += `
-                <div class="uc-card p-10 text-center animate__animated animate__fadeInUp">
-                    ${p.best ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-500 text-black px-6 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl">Iň Köp Satylýan</div>' : ''}
-                    <div class="uc-image-container mb-8">
-                        <div class="uc-glow-bg"></div>
-                        <img src="uc.png" class="w-24 h-24 mx-auto object-contain hover:rotate-12 transition duration-500" alt="UC">
-                    </div>
-                    <div class="mb-8">
-                        <span class="text-[9px] text-yellow-500/50 uppercase font-black tracking-widest">${p.badge}</span>
-                        <h3 class="text-3xl font-game font-black text-white mt-1">${p.uc} PUBG UC</h3>
-                        <p class="text-gray-500 text-[10px] uppercase font-bold tracking-[3px] mt-2">Global Instant Delivery</p>
-                    </div>
-                    <div class="bg-black/30 p-5 rounded-2xl mb-10 border border-white/5 flex justify-between items-center px-8">
-                        <span class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Baha:</span>
-                        <span class="text-2xl font-black text-white italic tracking-tighter">₺${p.price}</span>
-                    </div>
-                    <button onclick="openModal('${p.uc}', '${p.price}')" class="btn-master w-full py-5 rounded-2xl text-xs">
-                        <i class="fa-solid fa-cart-shopping mr-2"></i> SATIN AL
-                    </button>
-                </div>
-            `;
-        });
-
-        // App Logic
-        let selUC = ""; let selPrice = "";
-
-        function openModal(uc, price) {
-            selUC = uc; selPrice = price;
-            document.getElementById('selUC').innerText = uc;
-            document.getElementById('selPrice').innerText = price;
+        function initPayment(amt, price) {
+            currentAmt = amt; currentP = price;
+            document.getElementById('mUC').innerText = amt;
+            document.getElementById('mPrice').innerText = price;
             document.getElementById('paymentModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -372,25 +292,36 @@
             document.body.style.overflow = 'auto';
         }
 
-        function copyData(id) {
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text);
-            alert("Göçürildi: " + text);
+        // Professional Copy Logic
+        function executeCopy(elementId, toastMsg) {
+            const text = document.getElementById(elementId).innerText;
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            // Visual feedback
+            alert(toastMsg);
         }
 
-        function sendWhatsApp() {
-            const id = document.getElementById('playerID').value;
-            if(!id || id.length < 5) { alert("Dogry ID belgiňizi ýazyň!"); return; }
-
-            const message = `Salam DostlukPubgUcShop!%0A%0A✅ *TÖLEG ETDIM*%0A━━━━━━━━━━━━━━━%0A📦 Paket: *${selUC} UC*%0A💰 Baha: *₺${selPrice}*%0A🆔 Player ID: *${id}*%0A━━━━━━━━━━━━━━━%0AÇek aşakda ugradylýar...`;
-            window.open(`https://wa.me/905016873001?text=${message}`, '_blank');
+        function finalSubmit() {
+            const pid = document.getElementById('targetID').value;
+            if(!pid || pid.length < 5) {
+                alert("Lütfen dogry ID belgiňizi ýazyň!"); //
+                return;
+            }
+            
+            const waMsg = `Salam! *DostlukPubgUcShop*%0A━━━━━━━━━━━━━━━━━%0A✅ *TÖLEG TASSYKLANDY*%0A📦 Paket: *${currentAmt} UC*%0A💰 Baha: *₺${currentP}*%0A🆔 Player ID: *${pid}*%0A━━━━━━━━━━━━━━━━━%0AÇek aşakda ugradylýar...`;
+            window.open(`https://wa.me/905016873001?text=${waMsg}`, '_blank');
             closeModal();
         }
 
-        function scrollToMarket() {
-            document.getElementById('market').scrollIntoView({ behavior: 'smooth' });
+        // Close on outside click
+        window.onclick = function(e) {
+            if(e.target == document.getElementById('paymentModal')) closeModal();
         }
     </script>
 </body>
 </html>
-
