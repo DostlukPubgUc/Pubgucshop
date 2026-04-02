@@ -19,175 +19,169 @@
         .font-game { font-family: 'Orbitron', sans-serif; }
 
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
         }
 
         .glass-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-8px);
             border-color: #fbbf24;
-            box-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
         }
 
         .neon-text {
-            text-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
-        }
-
-        .uc-badge {
-            background: linear-gradient(90deg, #fbbf24 0%, #d97706 100%);
-            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
         }
 
         .btn-whatsapp {
-            background: linear-gradient(45deg, #22c55e, #16a34a);
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
-            transition: 0.3s;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            transition: 0.4s;
+            color: black;
         }
 
         .btn-whatsapp:hover {
             filter: brightness(1.2);
-            box-shadow: 0 0 25px rgba(34, 197, 94, 0.6);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+            transform: scale(1.02);
+        }
+
+        .uc-img {
+            filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));
         }
 
         .bg-glow {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
+            background: radial-gradient(circle at 15% 15%, rgba(245, 158, 11, 0.08) 0%, transparent 35%),
+                        radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.08) 0%, transparent 35%);
         }
     </style>
 </head>
 <body>
     <div class="bg-glow"></div>
 
-    <nav class="flex justify-between items-center p-6 max-w-6xl mx-auto">
-        <div class="flex items-center gap-2">
-            <div class="w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center rotate-45">
-                <i class="fa-solid fa-bolt text-black -rotate-45 text-xl"></i>
+    <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
+        <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.5)]">
+                <i class="fa-solid fa-bolt-lightning text-black text-2xl"></i>
             </div>
-            <span class="font-game text-2xl font-bold tracking-tighter neon-text uppercase">UcarYaly</span>
+            <div>
+                <h1 class="font-game text-2xl font-black tracking-tighter neon-text uppercase leading-none">UcarYaly</h1>
+                <span class="text-[10px] text-yellow-500 tracking-[3px] uppercase opacity-70">Official UC Store</span>
+            </div>
         </div>
-        <div class="hidden md:flex gap-6 text-sm font-bold uppercase tracking-widest text-slate-400">
-            <a href="#" class="hover:text-yellow-500 transition border-b-2 border-yellow-500">Ürünler</a>
-            <a href="https://wa.me/905016873001" class="hover:text-yellow-500 transition">Destek</a>
-            <span class="text-green-500 animate-pulse font-game italic">● ONLAÝN</span>
+        <div class="hidden md:flex gap-8 items-center text-xs font-bold uppercase tracking-widest">
+            <a href="#" class="text-yellow-500 border-b border-yellow-500 pb-1">BÄŞ SAHYPA</a>
+            <a href="https://wa.me/905016873001" class="hover:text-yellow-500 transition">KÖMEK</a>
+            <div class="flex items-center gap-2 bg-green-500/10 px-3 py-1 rounded-full text-green-500 border border-green-500/20">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+                <span class="italic text-[10px]">7/24 AKTIF</span>
+            </div>
         </div>
     </nav>
 
-    <section class="text-center py-8 px-4">
-        <h2 class="text-4xl md:text-6xl font-game font-black mb-2 tracking-tighter">
+    <section class="text-center py-10 px-4">
+        <h2 class="text-5xl md:text-7xl font-game font-black mb-4 tracking-tighter">
             <span class="text-white">PUBG MOBILE</span> <br>
-            <span class="text-yellow-500 neon-text italic">UC SATYŞ MERKEZI</span>
+            <span class="text-yellow-500 neon-text italic">INSTANT UC</span>
         </h2>
-        <p class="text-slate-400 max-w-lg mx-auto text-sm md:text-base uppercase tracking-widest">Resmi bahalar we çalt ýükleme</p>
+        <p class="text-slate-400 max-w-lg mx-auto text-sm md:text-base font-medium tracking-[2px] uppercase opacity-80">Türkiýäniň iň çalt we ygtybarly UC platformasy</p>
     </section>
 
-    <main class="max-w-6xl mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <main class="max-w-7xl mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
         
-        <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
-            <img src="https://www.pubgmobile.com/common/images/icon_uc.png" class="w-16 mx-auto mb-3">
-            <h3 class="text-xl font-bold font-game uppercase">60 PUBG Mobil UC</h3>
-            <div class="h-0.5 w-10 bg-yellow-500 mx-auto my-2"></div>
-            <p class="text-2xl font-black text-white mb-4">₺40,50</p>
-            <a href="https://wa.me/905016873001?text=Salam, 60 UC almak isleýärin." class="btn-whatsapp w-full py-3 rounded-lg font-bold flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> SATIN AL
+        <div class="glass-card rounded-[2rem] p-8 text-center relative group">
+            <img src="https://www.midasbuy.com/images/home/pubgm.png" class="w-24 mx-auto mb-6 uc-img group-hover:scale-110 transition duration-500" alt="UC Icon">
+            <h3 class="text-2xl font-bold font-game tracking-tight">60 PUBG Mobil UC</h3>
+            <div class="h-1 w-16 bg-yellow-500/30 mx-auto my-4 rounded-full"></div>
+            <p class="text-4xl font-black text-white mb-8 tracking-tighter">₺40,50</p>
+            <a href="https://wa.me/905016873001?text=Salam, 60 UC almak isleýärin." class="btn-whatsapp w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
+                <i class="fa-solid fa-cart-shopping"></i> SATIN AL
             </a>
         </div>
 
-        <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
-            <img src="https://www.pubgmobile.com/common/images/icon_uc.png" class="w-16 mx-auto mb-3">
-            <h3 class="text-xl font-bold font-game uppercase">325 PUBG Mobil UC</h3>
-            <div class="h-0.5 w-10 bg-yellow-500 mx-auto my-2"></div>
-            <p class="text-2xl font-black text-white mb-4">₺202,50</p>
-            <a href="https://wa.me/905016873001?text=Salam, 325 UC almak isleýärin." class="btn-whatsapp w-full py-3 rounded-lg font-bold flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> SATIN AL
+        <div class="glass-card rounded-[2rem] p-8 text-center relative border-yellow-500/60 border-2 shadow-[0_0_50px_rgba(245,158,11,0.15)]">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-yellow-500 text-black px-6 py-1 rounded-b-xl text-[10px] font-black uppercase tracking-widest">Iň Köp Satylýan</div>
+            <img src="https://www.midasbuy.com/images/home/pubgm.png" class="w-24 mx-auto mb-6 uc-img" alt="UC Icon">
+            <h3 class="text-2xl font-bold font-game tracking-tight">325 PUBG Mobil UC</h3>
+            <div class="h-1 w-16 bg-yellow-500/30 mx-auto my-4 rounded-full"></div>
+            <p class="text-4xl font-black text-white mb-8 tracking-tighter">₺202,50</p>
+            <a href="https://wa.me/905016873001?text=Salam, 325 UC almak isleýärin." class="btn-whatsapp w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
+                <i class="fa-solid fa-cart-shopping"></i> SATIN AL
             </a>
         </div>
 
-        <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden border-yellow-500/50 border shadow-lg">
-            <div class="uc-badge absolute top-3 right-[-15px] px-8 py-0.5 text-black font-black text-[10px]">MEŞHUR</div>
-            <img src="https://www.pubgmobile.com/common/images/icon_uc.png" class="w-16 mx-auto mb-3">
-            <h3 class="text-xl font-bold font-game uppercase">660 PUBG Mobil UC</h3>
-            <div class="h-0.5 w-10 bg-yellow-500 mx-auto my-2"></div>
-            <p class="text-2xl font-black text-white mb-4">₺405,00</p>
-            <a href="https://wa.me/905016873001?text=Salam, 660 UC almak isleýärin." class="btn-whatsapp w-full py-3 rounded-lg font-bold flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> SATIN AL
+        <div class="glass-card rounded-[2rem] p-8 text-center relative group">
+            <img src="https://www.midasbuy.com/images/home/pubgm.png" class="w-24 mx-auto mb-6 uc-img group-hover:scale-110 transition duration-500" alt="UC Icon">
+            <h3 class="text-2xl font-bold font-game tracking-tight">660 PUBG Mobil UC</h3>
+            <div class="h-1 w-16 bg-yellow-500/30 mx-auto my-4 rounded-full"></div>
+            <p class="text-4xl font-black text-white mb-8 tracking-tighter">₺405,00</p>
+            <a href="https://wa.me/905016873001?text=Salam, 660 UC almak isleýärin." class="btn-whatsapp w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
+                <i class="fa-solid fa-cart-shopping"></i> SATIN AL
             </a>
         </div>
 
-        <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
-            <img src="https://www.pubgmobile.com/common/images/icon_uc.png" class="w-16 mx-auto mb-3">
-            <h3 class="text-xl font-bold font-game uppercase">3.850 PUBG Mobil UC</h3>
-            <div class="h-0.5 w-10 bg-yellow-500 mx-auto my-2"></div>
-            <p class="text-2xl font-black text-white mb-4">₺2.025,00</p>
-            <a href="https://wa.me/905016873001?text=Salam, 3.850 UC almak isleýärin." class="btn-whatsapp w-full py-3 rounded-lg font-bold flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> SATIN AL
+        <div class="glass-card rounded-[2rem] p-8 text-center relative group">
+            <img src="https://www.midasbuy.com/images/home/pubgm.png" class="w-24 mx-auto mb-6 uc-img group-hover:scale-110 transition duration-500" alt="UC Icon">
+            <h3 class="text-2xl font-bold font-game tracking-tight">3.850 PUBG Mobil UC</h3>
+            <div class="h-1 w-16 bg-yellow-500/30 mx-auto my-4 rounded-full"></div>
+            <p class="text-4xl font-black text-white mb-8 tracking-tighter">₺2.025,00</p>
+            <a href="https://wa.me/905016873001?text=Salam, 3.850 UC almak isleýärin." class="btn-whatsapp w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
+                <i class="fa-solid fa-cart-shopping"></i> SATIN AL
             </a>
         </div>
 
-        <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
-            <img src="https://www.pubgmobile.com/common/images/icon_uc.png" class="w-16 mx-auto mb-3">
-            <h3 class="text-xl font-bold font-game uppercase">8.100 PUBG Mobil UC</h3>
-            <div class="h-0.5 w-10 bg-yellow-500 mx-auto my-2"></div>
-            <p class="text-2xl font-black text-white mb-4">₺4.050,00</p>
-            <a href="https://wa.me/905016873001?text=Salam, 8.100 UC almak isleýärin." class="btn-whatsapp w-full py-3 rounded-lg font-bold flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> SATIN AL
+        <div class="glass-card rounded-[2rem] p-8 text-center relative group">
+            <img src="https://www.midasbuy.com/images/home/pubgm.png" class="w-24 mx-auto mb-6 uc-img group-hover:scale-110 transition duration-500" alt="UC Icon">
+            <h3 class="text-2xl font-bold font-game tracking-tight">8.100 PUBG Mobil UC</h3>
+            <div class="h-1 w-16 bg-yellow-500/30 mx-auto my-4 rounded-full"></div>
+            <p class="text-4xl font-black text-white mb-8 tracking-tighter">₺4.050,00</p>
+            <a href="https://wa.me/905016873001?text=Salam, 8.100 UC almak isleýärin." class="btn-whatsapp w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
+                <i class="fa-solid fa-cart-shopping"></i> SATIN AL
             </a>
         </div>
 
-        <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
-            <img src="https://www.pubgmobile.com/common/images/icon_uc.png" class="w-16 mx-auto mb-3">
-            <h3 class="text-xl font-bold font-game uppercase">16.200 PUBG Mobil UC</h3>
-            <div class="h-0.5 w-10 bg-yellow-500 mx-auto my-2"></div>
-            <p class="text-2xl font-black text-white mb-4">₺8.100,00</p>
-            <a href="https://wa.me/905016873001?text=Salam, 16.200 UC almak isleýärin." class="btn-whatsapp w-full py-3 rounded-lg font-bold flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> SATIN AL
-            </a>
-        </div>
-
-        <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
-            <img src="https://www.pubgmobile.com/common/images/icon_uc.png" class="w-16 mx-auto mb-3">
-            <h3 class="text-xl font-bold font-game uppercase">24.300 PUBG Mobil UC</h3>
-            <div class="h-0.5 w-10 bg-yellow-500 mx-auto my-2"></div>
-            <p class="text-2xl font-black text-white mb-4">₺12.150,00</p>
-            <a href="https://wa.me/905016873001?text=Salam, 24.300 UC almak isleýärin." class="btn-whatsapp w-full py-3 rounded-lg font-bold flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> SATIN AL
-            </a>
-        </div>
-
-        <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
-            <img src="https://www.pubgmobile.com/common/images/icon_uc.png" class="w-16 mx-auto mb-3">
-            <h3 class="text-xl font-bold font-game uppercase">32.400 PUBG Mobil UC</h3>
-            <div class="h-0.5 w-10 bg-yellow-500 mx-auto my-2"></div>
-            <p class="text-2xl font-black text-white mb-4">₺16.200,00</p>
-            <a href="https://wa.me/905016873001?text=Salam, 32.400 UC almak isleýärin." class="btn-whatsapp w-full py-3 rounded-lg font-bold flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> SATIN AL
-            </a>
-        </div>
-
-        <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
-            <img src="https://www.pubgmobile.com/common/images/icon_uc.png" class="w-16 mx-auto mb-3">
-            <h3 class="text-xl font-bold font-game uppercase">40.500 PUBG Mobil UC</h3>
-            <div class="h-0.5 w-10 bg-yellow-500 mx-auto my-2"></div>
-            <p class="text-2xl font-black text-white mb-4">₺20.250,00</p>
-            <a href="https://wa.me/905016873001?text=Salam, 40.500 UC almak isleýärin." class="btn-whatsapp w-full py-3 rounded-lg font-bold flex items-center justify-center gap-2">
-                <i class="fa-solid fa-cart-plus"></i> SATIN AL
+        <div class="glass-card rounded-[2rem] p-8 text-center relative group">
+            <img src="https://www.midasbuy.com/images/home/pubgm.png" class="w-24 mx-auto mb-6 uc-img group-hover:scale-110 transition duration-500" alt="UC Icon">
+            <h3 class="text-2xl font-bold font-game tracking-tight">16.200 PUBG Mobil UC</h3>
+            <div class="h-1 w-16 bg-yellow-500/30 mx-auto my-4 rounded-full"></div>
+            <p class="text-4xl font-black text-white mb-8 tracking-tighter">₺8.100,00</p>
+            <a href="https://wa.me/905016873001?text=Salam, 16.200 UC almak isleýärin." class="btn-whatsapp w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
+                <i class="fa-solid fa-cart-shopping"></i> SATIN AL
             </a>
         </div>
 
     </main>
 
-    <footer class="text-center p-10 text-slate-500 text-[10px] uppercase tracking-[3px]">
-        <p>© 2026 UCARYALY STORE - Ähli hukuklar goralan</p>
-        <div class="flex justify-center gap-4 mt-4 opacity-50">
-            <i class="fa-brands fa-cc-visa text-xl"></i>
-            <i class="fa-brands fa-cc-mastercard text-xl"></i>
-            <i class="fa-solid fa-building-columns text-xl"></i>
+    <section class="max-w-7xl mx-auto my-20 px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-bolt-lightning text-yellow-500 text-4xl mb-4"></i>
+            <h4 class="font-game font-bold uppercase mb-2">Çalt Eltme</h4>
+            <p class="text-slate-500 text-sm">Söwdadan soňra 5 minutda UC-lar hasabyňyzda bolar.</p>
         </div>
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-shield-halved text-blue-500 text-4xl mb-4"></i>
+            <h4 class="font-game font-bold uppercase mb-2">Ygtybarly</h4>
+            <p class="text-slate-500 text-sm">Resmi Midasbuy we Perdigital bahalary bilen ygtybarly söwda.</p>
+        </div>
+        <div class="flex flex-col items-center">
+            <i class="fa-solid fa-comments text-green-500 text-4xl mb-4"></i>
+            <h4 class="font-game font-bold uppercase mb-2">Canly Goldaw</h4>
+            <p class="text-slate-500 text-sm">WhatsApp arkaly islendik wagt sorag bermek mümkin.</p>
+        </div>
+    </section>
+
+    <footer class="bg-black/40 border-t border-white/5 py-12 px-6 text-center">
+        <div class="flex justify-center gap-6 mb-8 text-slate-500 opacity-40">
+            <i class="fa-brands fa-cc-visa text-3xl"></i>
+            <i class="fa-brands fa-cc-mastercard text-3xl"></i>
+            <i class="fa-solid fa-wallet text-3xl"></i>
+        </div>
+        <p class="text-slate-600 text-[10px] tracking-[4px] uppercase">© 2026 UCARYALY STORE. ALL RIGHTS RESERVED.</p>
     </footer>
 
 </body>
