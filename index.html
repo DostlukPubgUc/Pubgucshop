@@ -37,103 +37,54 @@
             border-radius: 50px;
             font-size: 11px;
             font-weight: 800;
-            letter-spacing: 1px;
         }
 
         /* HERO AREA */
         .hero-title {
             font-size: clamp(2.5rem, 8vw, 6rem);
-            line-height: 1;
             font-weight: 900;
             text-transform: uppercase;
             font-family: 'Orbitron', sans-serif;
             font-style: italic;
         }
 
-        /* CARD ANIMATION - BAÝLAŞDYRYLDY */
+        /* CARD STYLE */
         .uc-card {
             background: var(--card-bg);
             border-radius: 2.5rem;
-            border: 1px solid rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             position: relative;
             overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s;
         }
 
-        .uc-card:hover {
-            transform: translateY(-15px);
-            border-color: var(--gold);
-            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.1);
-        }
-
-        .uc-card::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, var(--gold));
-            animation: rotate-border 6s linear infinite;
-            opacity: 0.15;
-            pointer-events: none;
-        }
-
-        @keyframes rotate-border {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        .uc-card:hover { border-color: var(--gold); transform: translateY(-5px); }
 
         /* TERMINAL MODAL */
         #paymentModal {
             display: none; position: fixed; inset: 0; z-index: 9999;
-            background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
             align-items: center; justify-content: center; padding: 20px;
         }
 
         .terminal-content {
-            width: 100%; max-width: 500px;
+            width: 100%; max-width: 480px;
             background: #0f172a;
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 3.5rem;
-            padding: 40px;
+            border: 1px solid var(--gold);
+            border-radius: 3rem;
+            padding: 35px;
         }
 
-        .copy-box {
-            background: #030712;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 20px;
+        /* FAQ STYLE - TÄZE GOŞULDY */
+        .faq-item {
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.05);
             border-radius: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
+            padding: 20px;
+            margin-bottom: 12px;
+            transition: 0.3s;
         }
-
-        .copy-btn {
-            background: rgba(251, 191, 36, 0.1);
-            color: var(--gold);
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 800;
-        }
-
-        .id-input {
-            width: 100%; background: #000; border: 1px solid #1e293b;
-            color: #fff; padding: 22px; border-radius: 1.5rem;
-            text-align: center; font-size: 1.4rem; font-family: 'Orbitron', sans-serif;
-            margin-top: 30px;
-        }
-
-        .id-input:focus { border-color: var(--gold); outline: none; }
-
-        .btn-submit {
-            background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-            color: #000; font-weight: 900; width: 100%; padding: 22px;
-            border-radius: 1.5rem; text-transform: uppercase; letter-spacing: 2px;
-            margin-top: 25px; transition: 0.3s;
-        }
-
-        .btn-submit:active { transform: scale(0.95); }
-
+        .faq-item:hover { border-color: var(--gold); }
     </style>
 </head>
 <body>
@@ -141,13 +92,10 @@
     <nav class="fixed top-0 w-full z-[1000] glass-nav py-5 px-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <div class="w-11 h-11 bg-yellow-500 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-500/20">
-                    <i class="fa-solid fa-bolt-lightning text-black text-2xl"></i>
+                <div class="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-bolt text-black text-xl"></i>
                 </div>
-                <div>
-                    <h1 class="font-game text-xl font-black text-yellow-500 leading-none">DOSTLUK</h1>
-                    <p class="text-[9px] uppercase tracking-[3px] text-gray-500 mt-1">PubgUcShop Professional</p>
-                </div>
+                <h1 class="font-game text-xl font-black text-yellow-500">DOSTLUK</h1>
             </div>
             
             <div class="op-online">
@@ -157,159 +105,164 @@
         </div>
     </nav>
 
-    <section class="pt-48 pb-32 px-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="inline-block px-6 py-2 bg-white/5 border border-white/10 rounded-full mb-10">
-                <span class="text-[10px] font-black text-gray-400 tracking-[5px] uppercase">Official Store 2026</span>
-            </div>
-            
-            <h2 class="hero-title animate__animated animate__zoomIn">
-                <span class="text-white">DOSTLUK</span><br>
-                <span class="text-yellow-500">PUBGUCSHOP</span>
-            </h2>
-            
-            <p class="text-gray-400 max-w-2xl mx-auto text-lg mt-12 leading-relaxed">
-                Siziň ygtybarly UC dükanyňyz. Ähli amallar awtomatiki we 5 minut içinde hasabyňyzda.
-            </p>
+    <section class="pt-40 pb-20 px-6 text-center">
+        <div class="inline-block px-5 py-2 bg-yellow-500/10 border border-yellow-500/20 rounded-full mb-8">
+            <span class="text-[10px] font-black text-yellow-500 tracking-[3px] uppercase">
+                <i class="fa-solid fa-shield-halved mr-2"></i> Verified Global Reseller 2026
+            </span>
+        </div>
+        
+        <h2 class="hero-title mb-10">
+            <span class="text-white">DOSTLUK</span><br>
+            <span class="text-yellow-500">PUBGUCSHOP</span>
+        </h2>
+        
+        <p class="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed mb-12">
+            Türkmenistan we Türkiýe üçin iň ygtybarly hyzmat. Ähli amallar awtomatiki we 5 minut içinde hasabyňyzda.
+        </p>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20">
-                <div class="p-8 bg-white/5 border border-white/10 rounded-[2.5rem]">
-                    <div class="text-3xl font-game font-black text-white">15K+</div>
-                    <div class="text-[10px] text-gray-500 font-bold uppercase mt-2 tracking-widest">Satuwlar</div>
-                </div>
-                <div class="p-8 bg-white/5 border border-white/10 rounded-[2.5rem]">
-                    <div class="text-3xl font-game font-black text-blue-500">5dk</div>
-                    <div class="text-[10px] text-gray-500 font-bold uppercase mt-2 tracking-widest">Eltme</div>
-                </div>
-                <div class="p-8 bg-white/5 border border-white/10 rounded-[2.5rem]">
-                    <div class="text-3xl font-game font-black text-green-500">99%</div>
-                    <div class="text-[10px] text-gray-500 font-bold uppercase mt-2 tracking-widest">Ynam</div>
-                </div>
-                <div class="p-8 bg-white/5 border border-white/10 rounded-[2.5rem]">
-                    <div class="text-3xl font-game font-black text-purple-500">7/24</div>
-                    <div class="text-[10px] text-gray-500 font-bold uppercase mt-2 tracking-widest">Goldaw</div>
-                </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-20">
+            <div class="p-6 bg-white/5 border border-white/5 rounded-[2rem]">
+                <div class="text-2xl font-game font-black text-white">15K+</div>
+                <div class="text-[9px] text-gray-500 font-bold uppercase mt-1">Satuwlar</div>
+            </div>
+            <div class="p-6 bg-white/5 border border-white/5 rounded-[2rem]">
+                <div class="text-2xl font-game font-black text-blue-500">5dk</div>
+                <div class="text-[9px] text-gray-500 font-bold uppercase mt-1">Eltme</div>
+            </div>
+            <div class="p-6 bg-white/5 border border-white/5 rounded-[2rem]">
+                <div class="text-2xl font-game font-black text-green-500">99%</div>
+                <div class="text-[9px] text-gray-500 font-bold uppercase mt-1">Ynam</div>
+            </div>
+            <div class="p-6 bg-white/5 border border-white/5 rounded-[2rem]">
+                <div class="text-2xl font-game font-black text-purple-500">7/24</div>
+                <div class="text-[9px] text-gray-500 font-bold uppercase mt-1">Goldaw</div>
+            </div>
+        </div>
+
+        <div id="market" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            </div>
+    </section>
+
+    <section class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="font-game text-2xl text-white text-center mb-12 italic">KÖP BERILÝÄN SORAGLAR</h3>
+            
+            <div class="faq-item">
+                <h4 class="text-yellow-500 font-bold mb-2"><i class="fa-solid fa-circle-info mr-2"></i> UC-lar haçan hasaba geçýär?</h4>
+                <p class="text-gray-400 text-sm">Töleg tassyklanyndan soň, ortaça 5 minut içinde UC-lar hasabyňyza awtomatiki geçirilýär.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4 class="text-yellow-500 font-bold mb-2"><i class="fa-solid fa-shield-check mr-2"></i> Sistemanyňyz ygtybarlymy?</h4>
+                <p class="text-gray-400 text-sm">Hawa, ähli amallar resmi hyzmatdaşlyk we 100% garantiýa bilen ýerine ýetirilýär.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4 class="text-yellow-500 font-bold mb-2"><i class="fa-solid fa-headset mr-2"></i> Nähili habarlaşyp bileris?</h4>
+                <p class="text-gray-400 text-sm">Operatorymyz 7/24 onlaýn bolup, islendik wagt WhatsApp arkaly goldaw berýär.</p>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-black/20">
-        <div id="market" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            </div>
-    </section>
-
     <div id="paymentModal">
-        <div class="terminal-content animate__animated animate__zoomIn">
-            <div class="flex justify-between items-center mb-10">
-                <h3 class="font-game text-2xl text-yellow-500 italic">TÖLEG TERMINALY</h3>
-                <button onclick="closeModal()" class="text-gray-500 hover:text-white transition"><i class="fa-solid fa-circle-xmark text-3xl"></i></button>
+        <div class="terminal-content">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="font-game text-xl text-yellow-500 italic">TÖLEG TERMINALY</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-white"><i class="fa-solid fa-xmark text-2xl"></i></button>
             </div>
 
             <div class="space-y-4">
-                <div class="copy-box">
+                <div class="bg-black/40 p-4 rounded-2xl flex justify-between items-center border border-white/5">
                     <div class="flex flex-col">
-                        <span class="text-[9px] text-gray-500 font-black uppercase mb-1">SATYJY:</span>
-                        <span id="targetName" class="text-sm font-black text-white uppercase">AMAN HAYITMURADOV</span>
+                        <span class="text-[9px] text-gray-500 font-black uppercase">Satyjy:</span>
+                        <span id="tName" class="text-xs font-black text-white uppercase">AMAN HAYITMURADOV</span>
                     </div>
-                    <button onclick="copy('targetName', 'At göçürildi')" class="copy-btn">GÖÇÜR</button>
+                    <button onclick="copyTxt('tName', 'At göçürildi')" class="px-3 py-1 bg-yellow-500/10 text-yellow-500 text-[10px] font-bold rounded-lg uppercase">Göçür</button>
                 </div>
 
-                <div class="copy-box">
+                <div class="bg-black/40 p-4 rounded-2xl flex justify-between items-center border border-white/5">
                     <div class="flex flex-col">
-                        <span class="text-[9px] text-gray-500 font-black uppercase mb-1">IBAN NOMER:</span>
-                        <span id="targetIban" class="text-sm font-mono font-bold text-yellow-500">TR91 0015 7000 0000 0201 1511 63</span>
+                        <span class="text-[9px] text-gray-500 font-black uppercase">IBAN:</span>
+                        <span id="tIban" class="text-xs font-mono font-bold text-yellow-500">TR91 0015 7000 0000 0201 1511 63</span>
                     </div>
-                    <button onclick="copy('targetIban', 'IBAN göçürildi')" class="copy-btn">GÖÇÜR</button>
+                    <button onclick="copyTxt('tIban', 'IBAN göçürildi')" class="px-3 py-1 bg-yellow-500/10 text-yellow-500 text-[10px] font-bold rounded-lg uppercase">Göçür</button>
                 </div>
 
-                <div class="pt-8 border-t border-white/5 text-center">
-                    <p class="text-[10px] text-gray-500 font-black uppercase tracking-[4px] mb-4">PUBG ID BELGIŇIZI ÝAZYŇ</p>
-                    <input type="number" id="playerID" placeholder="Meselem: 51234567" class="id-input">
+                <div class="pt-6 border-t border-white/5">
+                    <input type="number" id="playerID" placeholder="Meselem: 51234567" class="w-full bg-black border border-white/10 text-white p-5 rounded-2xl text-center font-game text-xl mb-6">
                     
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-2xl mt-8 border border-white/5">
-                        <span class="text-[11px] text-gray-500 font-black italic">HESAP:</span>
-                        <span class="text-sm font-black text-white italic uppercase"><span id="mUC">0</span> UC — ₺<span id="mPrice">0</span></span>
+                    <div class="bg-yellow-500/5 p-4 rounded-2xl mb-6 text-center border border-yellow-500/10">
+                        <span class="text-[10px] text-gray-500 font-black uppercase tracking-widest italic">Paket: <span id="selUC" class="text-white">0</span> UC — ₺<span id="selP" class="text-white">0</span></span>
                     </div>
 
-                    <button onclick="submitOrder()" class="btn-submit">
-                        <i class="fa-solid fa-shield-check mr-2"></i> TÖLEG ETDIM
+                    <button onclick="sendWA()" class="w-full bg-yellow-500 text-black font-black py-5 rounded-2xl uppercase tracking-widest shadow-lg shadow-yellow-500/20 active:scale-95 transition">
+                        TÖLEG ETDIM
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="py-20 border-t border-white/5 text-center">
-        <p class="text-[10px] text-gray-600 font-black tracking-[10px] uppercase">DostlukPubgUcShop Global</p>
+    <footer class="py-12 border-t border-white/5 text-center bg-black/40">
+        <div class="mb-6 flex justify-center gap-6">
+            <a href="#" class="text-[10px] text-gray-600 hover:text-white transition uppercase font-bold tracking-widest">Şertler</a>
+            <a href="#" class="text-[10px] text-gray-600 hover:text-white transition uppercase font-bold tracking-widest">Gizlinlik</a>
+            <a href="#" class="text-[10px] text-gray-600 hover:text-white transition uppercase font-bold tracking-widest">Kömek</a>
+        </div>
+        <p class="text-[11px] text-gray-800 font-black tracking-[10px] uppercase">
+            DOSTLUKPUBGUCSHOP GLOBAL 2026
+        </p>
     </footer>
 
     <script>
         const inventory = [
             { uc: "60", price: "40,50" },
-            { uc: "325", price: "202,50" }, //
+            { uc: "325", price: "202,50" },
             { uc: "660", price: "405,00" },
             { uc: "1.800", price: "1.012,50" },
             { uc: "3.850", price: "2.025,00" },
-            { uc: "8.100", price: "4.050,00" },
-            { uc: "16.200", price: "8.100,00" },
-            { uc: "24.300", price: "12.150,00" },
-            { uc: "32.400", price: "16.200,00" },
-            { uc: "40.500", price: "20.250,00" }
+            { uc: "8.100", price: "4.050,00" }
         ];
 
         const market = document.getElementById('market');
         inventory.forEach(item => {
             market.innerHTML += `
-                <div class="uc-card p-12 text-center animate__animated animate__fadeInUp">
-                    <img src="uc.png" class="w-24 h-24 mx-auto mb-10 drop-shadow-[0_0_20px_rgba(251,191,36,0.4)]" alt="UC">
-                    <div class="mb-10">
-                        <span class="text-[10px] text-yellow-500/60 font-black tracking-[4px] uppercase">Elite Pack</span>
-                        <h4 class="font-game text-3xl font-black text-white mt-2">${item.uc} PUBG UC</h4>
+                <div class="uc-card p-10 text-center animate__animated animate__fadeInUp">
+                    <img src="uc.png" class="w-20 h-20 mx-auto mb-6" alt="UC">
+                    <h4 class="font-game text-2xl font-black text-white mb-8">${item.uc} PUBG UC</h4>
+                    <div class="bg-black/30 py-4 rounded-2xl flex justify-between px-6 border border-white/5 mb-8">
+                        <span class="text-[10px] text-gray-500 font-bold uppercase">Baha:</span>
+                        <span class="text-xl font-black text-white italic">₺${item.price}</span>
                     </div>
-                    <div class="bg-black/30 py-5 rounded-2xl flex justify-between px-8 border border-white/5 mb-10">
-                        <span class="text-[11px] text-gray-500 font-black uppercase">Baha:</span>
-                        <span class="text-2xl font-black text-white italic">₺${item.price}</span>
-                    </div>
-                    <button onclick="initPayment('${item.uc}', '${item.price}')" class="btn-submit !mt-0 !py-5 !text-xs">
-                        <i class="fa-solid fa-cart-arrow-down mr-2"></i> SATYN AL
+                    <button onclick="openPayment('${item.uc}', '${item.price}')" class="w-full bg-yellow-500 text-black font-black py-4 rounded-xl uppercase text-xs active:scale-95 transition">
+                        SATYN AL
                     </button>
                 </div>
             `;
         });
 
-        let currentUC = ""; let currentPrice = "";
+        let sUC = ""; let sP = "";
 
-        function initPayment(uc, p) {
-            currentUC = uc; currentPrice = p;
-            document.getElementById('mUC').innerText = uc;
-            document.getElementById('mPrice').innerText = p;
+        function openPayment(uc, p) {
+            sUC = uc; sP = p;
+            document.getElementById('selUC').innerText = uc;
+            document.getElementById('selP').innerText = p;
             document.getElementById('paymentModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            document.getElementById('paymentModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+        function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
 
-        function copy(id, msg) {
+        function copyTxt(id, msg) {
             const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert(msg);
-            });
+            navigator.clipboard.writeText(text).then(() => alert(msg));
         }
 
-        function submitOrder() {
-            const pid = document.getElementById('playerID').value;
-            if(!pid || pid.length < 5) { alert("Dogry ID belgiňizi ýazyň!"); return; }
-            
-            const msg = `Salam! *DostlukPubgUcShop*%0A━━━━━━━━━━━━━━━━━%0A✅ *TÖLEG TASSYKLANDY*%0A📦 Paket: *${currentUC} UC*%0A💰 Baha: *₺${currentPrice}*%0A🆔 Player ID: *${pid}*%0A━━━━━━━━━━━━━━━━━%0AÇek ugradylýar...`;
+        function sendWA() {
+            const id = document.getElementById('playerID').value;
+            if(!id || id.length < 5) { alert("Dogry ID belgiňizi ýazyň!"); return; }
+            const msg = `Salam! *DostlukPubgUcShop*%0A━━━━━━━━━━━━━━━━━%0A✅ *TÖLEG TASSYKLANDY*%0A📦 Paket: *${sUC} UC*%0A💰 Baha: *₺${sP}*%0A🆔 Player ID: *${id}*%0A━━━━━━━━━━━━━━━━━%0AÇek ugradylýar...`;
             window.open(`https://wa.me/905016873001?text=${msg}`, '_blank');
-            closeModal();
-        }
-
-        window.onclick = function(e) {
-            if(e.target == document.getElementById('paymentModal')) closeModal();
         }
     </script>
 </body>
