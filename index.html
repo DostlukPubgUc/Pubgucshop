@@ -7,6 +7,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;600;700&display=swap');
@@ -16,62 +17,65 @@
         body { background: var(--dark-bg); color: #f8fafc; overflow-x: hidden; }
         .font-game { font-family: 'Orbitron', sans-serif; }
 
-        /* UC Card Dizaýny */
+        /* UC Kartoçkasy we Janly Effektler */
         .uc-card {
             background: linear-gradient(145deg, #1e293b, #0f172a);
             border-radius: 2rem;
             border: 1px solid rgba(251, 191, 36, 0.1);
             padding: 1.5rem;
             text-align: center;
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Täze Uly Surat */
+        /* Üstüne gelende lowurdama we ulalma */
+        .uc-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--gold);
+            box-shadow: 0 25px 50px rgba(251, 191, 36, 0.15);
+        }
+
         .uc-image {
             width: 100%; height: 200px; object-fit: cover;
             border-radius: 1.5rem; margin-bottom: 1.5rem;
             border: 1px solid rgba(251, 191, 36, 0.2);
+            transition: 0.6s ease;
         }
+        .uc-card:hover .uc-image { transform: scale(1.08) rotate(1deg); }
 
-        /* Professional Sary Düwme */
+        /* Professional Sary Düwme Animasiýasy */
         .btn-buy {
             width: 100%; background: var(--gold); color: #000;
             font-weight: 900; text-transform: uppercase; padding: 1.25rem;
             border-radius: 1rem; font-family: 'Orbitron', sans-serif;
-            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2); transition: 0.2s;
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2); 
+            transition: 0.3s;
+            position: relative;
         }
-        .btn-buy:active { transform: scale(0.96); }
+        .btn-buy:active { transform: scale(0.92); }
 
-        /* FAQ Bölümi */
+        /* FAQ Bölümi Dizaýny */
         .faq-box {
             background: rgba(30, 41, 59, 0.4);
             border-radius: 1.5rem;
             padding: 1.5rem;
             margin-bottom: 1rem;
             border-left: 4px solid var(--gold);
+            transition: 0.3s;
         }
+        .faq-box:hover { background: rgba(30, 41, 59, 0.6); transform: translateX(10px); }
 
-        /* GitHub Gizleýän Modal Alert */
-        #customAlert {
+        /* GitHub Gizleýän Modal Alertler */
+        #customAlert, #paymentModal {
             display: none; position: fixed; inset: 0; z-index: 10000;
-            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(12px);
             align-items: center; justify-content: center;
         }
-        .alert-box {
+        .alert-box, .terminal {
             background: #0f172a; border: 2px solid var(--gold);
-            border-radius: 2.5rem; padding: 2.5rem; width: 85%; max-width: 350px;
+            border-radius: 2.5rem; padding: 2.5rem; width: 90%; max-width: 400px;
             text-align: center;
-        }
-
-        /* Terminal Modal */
-        #paymentModal {
-            display: none; position: fixed; inset: 0; z-index: 9999;
-            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(12px);
-            align-items: center; justify-content: center; padding: 20px;
-        }
-        .terminal {
-            width: 100%; max-width: 420px; background: #0f172a; 
-            border: 1px solid var(--gold); border-radius: 2.5rem; padding: 2rem;
         }
     </style>
 </head>
@@ -79,62 +83,62 @@
 
     <div class="w-full bg-slate-950 py-3 border-b border-white/5 text-center">
         <div class="inline-flex items-center gap-2 bg-green-500/10 text-green-500 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
-            <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
             Operator Online: 7/24
         </div>
     </div>
 
-    <nav class="py-8 text-center">
-        <h1 class="font-game text-2xl font-black text-yellow-500 italic uppercase">DOSTLUK SHOP</h1>
+    <nav class="py-10 text-center animate__animated animate__fadeInDown">
+        <h1 class="font-game text-3xl font-black text-yellow-500 italic uppercase tracking-tighter">DOSTLUK SHOP</h1>
     </nav>
 
     <main class="py-6 px-6 max-w-7xl mx-auto">
-        <div id="market" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"></div>
+        <div id="market" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"></div>
 
-        <div class="max-w-3xl mx-auto mb-20">
-            <h3 class="font-game text-xl text-yellow-500 mb-8 text-center italic uppercase tracking-tighter">Sorag-Jogap (FAQ)</h3>
+        <div class="max-w-3xl mx-auto mb-24 animate__animated animate__fadeInUp">
+            <h3 class="font-game text-xl text-yellow-500 mb-8 text-center italic uppercase">Sorag-Jogap (FAQ)</h3>
             
             <div class="faq-box">
-                <p class="text-yellow-500 font-bold mb-1 italic">UC haçan gelýär?</p>
-                <p class="text-gray-400 text-sm">Töleg tassyklanandan soň 5-15 minudyň içinde ID hasabyňyza geçirilýär.</p>
+                <p class="text-yellow-500 font-bold mb-1 italic">UC näçe wagtyň içinde gelýär?</p>
+                <p class="text-gray-400 text-sm">Töleg tassyklanandan soň 5-15 minudyň içinde hasabyňyza geçirilýär.</p>
             </div>
 
             <div class="faq-box">
                 <p class="text-yellow-500 font-bold mb-1 italic">Tölegden soň näme etmeli?</p>
-                <p class="text-gray-400 text-sm">"Töleg Etdim" düwmesine basyň we WhatsApp arkaly dekonduňyzy (çek) ugradyň.</p>
+                <p class="text-gray-400 text-sm">"Töleg Etdim" düwmesine basyň we WhatsApp arkaly dekonduňyzy ugradyň.</p>
             </div>
 
             <div class="faq-box">
                 <p class="text-yellow-500 font-bold mb-1 italic">Ygtybarlymy?</p>
-                <p class="text-gray-400 text-sm">Hawa, Dostluk Shop 2026-dan bäri professional we ygtybarly hyzmat berýär.</p>
+                <p class="text-gray-400 text-sm italic">Hawa, 2026-dan bäri müňlerçe müşderä hyzmat berýän professional platforma.</p>
             </div>
         </div>
     </main>
 
-    <footer class="py-12 border-t border-white/5 text-center bg-slate-950/50">
-        <p class="text-gray-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-3">Ähli hukuklar goralan</p>
-        <p class="font-game text-xs text-yellow-500/40">© 2026 DOSTLUK SHOP | GLOBAL UC SERVICE</p>
+    <footer class="py-16 border-t border-white/5 text-center bg-slate-950/80">
+        <p class="text-gray-500 text-[10px] font-bold uppercase tracking-[0.5em] mb-4">Professional Gaming Service</p>
+        <p class="font-game text-xs text-yellow-500/40">© 2026 DOSTLUK SHOP | ALL RIGHTS RESERVED</p>
     </footer>
 
     <div id="paymentModal">
-        <div class="terminal">
+        <div class="terminal animate__animated animate__zoomIn">
             <div class="flex justify-between items-center mb-8">
-                <h3 class="font-game text-xs text-yellow-500 italic uppercase tracking-widest">Töleg Terminaly</h3>
+                <h3 class="font-game text-xs text-yellow-500 italic uppercase">Töleg Maglumatlary</h3>
                 <button onclick="closeModal()"><i class="fa-solid fa-xmark text-gray-500 text-xl"></i></button>
             </div>
             
             <div class="space-y-4">
-                <div class="bg-black/40 p-4 border border-yellow-500/20 rounded-2xl cursor-pointer text-center" onclick="copyVal('AMAN HAYITMURADOV', 'Adyňyz nusgalandy!')">
+                <div class="bg-black/50 p-5 border border-white/5 rounded-2xl cursor-pointer text-center" onclick="copyVal('AMAN HAYITMURADOV', 'Adyňyz nusgalandy!')">
                     <span class="text-[8px] text-gray-600 block mb-1">RESMI SATYJY</span>
-                    <p class="text-white font-bold uppercase tracking-wider">AMAN HAYITMURADOV</p>
+                    <p class="text-white font-bold uppercase">AMAN HAYITMURADOV</p>
                 </div>
 
-                <div class="bg-black/40 p-4 border border-yellow-500/20 rounded-2xl cursor-pointer text-center" onclick="copyVal('TR91 0015 7000 0000 0201 1511 63', 'IBAN nusgalandy!')">
-                    <span class="text-[8px] text-gray-600 block mb-1">IBAN (TÖLEG ÜÇIN)</span>
-                    <p class="text-yellow-500 font-bold text-xs">TR91 0015 7000 0000 0201 1511 63</p>
+                <div class="bg-black/50 p-5 border border-white/5 rounded-2xl cursor-pointer text-center" onclick="copyVal('TR91 0015 7000 0000 0201 1511 63', 'IBAN nusgalandy!')">
+                    <span class="text-[8px] text-gray-600 block mb-1">IBAN</span>
+                    <p class="text-yellow-500 font-bold text-xs uppercase">TR91 0015 7000 0000 0201 1511 63</p>
                 </div>
 
-                <input type="number" id="playerID" placeholder="ID belgiňizi ýazyň" class="w-full bg-black border border-white/10 text-white p-5 rounded-2xl text-center font-game text-xl outline-none focus:border-yellow-500 mt-2">
+                <input type="number" id="playerID" placeholder="PLAYER ID" class="w-full bg-black border border-white/10 text-white p-5 rounded-2xl text-center font-game text-xl outline-none focus:border-yellow-500">
                 
                 <button onclick="sendWA()" class="btn-buy mt-4 italic">TÖLEG ETDIM</button>
             </div>
@@ -142,15 +146,15 @@
     </div>
 
     <div id="customAlert">
-        <div class="alert-box">
+        <div class="alert-box animate__animated animate__bounceIn">
             <i class="fa-solid fa-circle-check text-yellow-500 text-4xl mb-4"></i>
-            <p id="alertMsg" class="text-white font-bold mb-6 italic uppercase text-sm tracking-tighter"></p>
-            <button onclick="closeAlert()" class="bg-yellow-500 text-black font-black px-12 py-3 rounded-full uppercase text-xs">Dowam et</button>
+            <p id="alertMsg" class="text-white font-bold mb-8 italic uppercase text-sm"></p>
+            <button onclick="closeAlert()" class="bg-yellow-500 text-black font-black px-12 py-3 rounded-full uppercase text-xs">OK</button>
         </div>
     </div>
 
     <script>
-        // Ähli UC paketleri we bahalary
+        // Ähli UC paketleri dikeltdildi
         const inventory = [
             { uc: "60", price: "40,50" }, { uc: "325", price: "202,50" }, { uc: "660", price: "405,00" },
             { uc: "1.800", price: "1.012,50" }, { uc: "3.850", price: "2.025,00" }, { uc: "8.100", price: "4.050,00" },
@@ -158,12 +162,13 @@
         ];
 
         const market = document.getElementById('market');
-        inventory.forEach(item => {
+        inventory.forEach((item, index) => {
+            // Kartoçkalar gezekli-gezegine animasiýa bilen ýüzüp çykar
             market.innerHTML += `
-                <div class="uc-card">
+                <div class="uc-card animate__animated animate__fadeInUp" style="animation-delay: ${index * 0.1}s">
                     <img src="516479509_1314959147297515_1216252998592852072_n.png" class="uc-image" alt="UC">
-                    <h4 class="font-game text-2xl font-black text-white mb-1 uppercase tracking-tighter">${item.uc} PUBG UC</h4>
-                    <p class="text-lg font-bold text-white/30 italic mb-6 font-game">₺${item.price}</p>
+                    <h4 class="font-game text-2xl font-black text-white mb-1 uppercase">${item.uc} UC</h4>
+                    <p class="text-lg font-bold text-white/30 italic mb-6 font-game italic">₺${item.price}</p>
                     <button onclick="openPay('${item.uc}', '${item.price}')" class="btn-buy italic">Satyn Al</button>
                 </div>
             `;
@@ -173,7 +178,6 @@
         function openPay(uc, p) { currentUC = uc; currentPrice = p; document.getElementById('paymentModal').style.display = 'flex'; }
         function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
         
-        // GitHub adyny gizlemek üçin ýörite funksiýa
         function showAlert(msg) {
             document.getElementById('alertMsg').innerText = msg;
             document.getElementById('customAlert').style.display = 'flex';
@@ -184,9 +188,8 @@
 
         function sendWA() {
             const id = document.getElementById('playerID').value;
-            // 7 san barlagy
             if(!id || id.length < 7) { 
-                showAlert("ID belgiňizi dogry we doly ýazyň!"); 
+                showAlert("ID belgiňizi dogry ýazyň!"); 
                 return; 
             }
             const msg = `Salam! Dostluk Shop%0A Paket: ${currentUC} UC%0A Baha: ₺${currentPrice}%0A ID: ${id}`;
