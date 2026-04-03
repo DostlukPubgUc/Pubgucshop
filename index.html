@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DostlukPubgUcShop | Professional</title>
+    <title>DostlukPubgUcShop</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,31 +16,23 @@
         body { background: var(--dark-bg); color: #f8fafc; overflow-x: hidden; }
         .font-game { font-family: 'Orbitron', sans-serif; }
 
-        /* Card Design */
         .uc-card {
             background: linear-gradient(145deg, #1e293b, #0f172a);
             border-radius: 2.5rem;
             border: 1px solid rgba(251, 191, 36, 0.1);
             padding: 2.5rem;
-            transition: 0.4s;
             text-align: center;
         }
-        .uc-card:hover { transform: translateY(-10px); border-color: var(--gold); }
 
-        /* Copy Action Style */
         .copy-box {
             background: rgba(0, 0, 0, 0.5);
             border: 1px dashed rgba(251, 191, 36, 0.3);
             padding: 12px;
             border-radius: 12px;
             cursor: pointer;
-            transition: 0.3s;
-            position: relative;
+            margin-bottom: 10px;
         }
-        .copy-box:active { transform: scale(0.95); background: rgba(251, 191, 36, 0.1); }
-        .copy-label { font-size: 9px; color: #64748b; text-transform: uppercase; margin-bottom: 4px; display: block; }
 
-        /* Modal */
         #paymentModal {
             display: none; position: fixed; inset: 0; z-index: 9999;
             background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px);
@@ -62,10 +54,10 @@
         </div>
     </div>
 
-    <nav class="sticky top-0 w-full z-[1000] bg-slate-950/80 backdrop-blur-md py-5 px-8 border-b border-white/5">
+    <nav class="py-5 px-8 border-b border-white/5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-500/20">
+                <div class="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center">
                     <i class="fa-solid fa-bolt text-black text-xl"></i>
                 </div>
                 <h1 class="font-game text-xl font-black text-yellow-500 italic uppercase">DOSTLUK</h1>
@@ -73,9 +65,9 @@
         </div>
     </nav>
 
-    <main class="pt-20 pb-20 px-8">
+    <main class="py-10 px-8">
         <div class="text-center mb-16">
-            <h2 class="font-game text-5xl font-black text-white italic uppercase leading-tight">Dostluk<br><span class="text-yellow-500">PubgUcShop</span></h2>
+            <h2 class="font-game text-4xl font-black text-white italic uppercase">Dostluk PubgUcShop</h2>
         </div>
         
         <div id="market" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"></div>
@@ -90,44 +82,35 @@
             
             <div class="space-y-4">
                 <div class="copy-box" onclick="copyText('AMAN HAYITMURADOV', 'Adyňyz nusgalandy!')">
-                    <span class="copy-label">Resmi Satyjy:</span>
+                    <span class="text-[9px] text-gray-500 uppercase block mb-1">Resmi Satyjy:</span>
                     <p class="text-white font-black tracking-widest uppercase">AMAN HAYITMURADOV</p>
                 </div>
 
-                <div class="copy-box" onclick="copyText('TR91 0015 7000 0000 0201 1511 63', 'Täze IBAN nusgalandy!')">
-                    <span class="copy-label">IBAN Belgi (Töleg üçin):</span>
+                <div class="copy-box" onclick="copyText('TR91 0015 7000 0000 0201 1511 63', 'IBAN nusgalandy!')">
+                    <span class="text-[9px] text-gray-500 uppercase block mb-1">IBAN Belgi:</span>
                     <p class="text-yellow-500 font-bold text-sm">TR91 0015 7000 0000 0201 1511 63</p>
                 </div>
 
-                <div class="py-2"></div>
-
                 <input type="number" id="playerID" placeholder="ID belgiňizi ýazyň" class="w-full bg-black border border-white/10 text-white p-5 rounded-2xl text-center font-game text-xl outline-none focus:border-yellow-500">
                 
-                <button onclick="sendWhatsApp()" class="w-full bg-yellow-500 text-black font-black py-5 rounded-2xl uppercase text-xs shadow-xl shadow-yellow-500/10">TÖLEG ETDIM</button>
+                <button onclick="sendWhatsApp()" class="w-full bg-yellow-500 text-black font-black py-5 rounded-2xl uppercase text-xs">TÖLEG ETDIM</button>
             </div>
         </div>
     </div>
 
     <script>
-        const ucImg = "https://raw.githubusercontent.com/DostlukPubgUc/Pubgucshop/main/516479509_1314959147297515_1216252998592852072_n.png";
-
         const inventory = [
             { uc: "60", price: "40,50" }, { uc: "325", price: "202,50" }, { uc: "660", price: "405,00" },
-            { uc: "1.800", price: "1.012,50" }, { uc: "3.850", price: "2.025,00" }, { uc: "8.100", price: "4.050,00" },
-            { uc: "16.200", price: "8.100,00" }, { uc: "24.300", price: "12.150,00" }, { uc: "40.500", price: "20.250,00" }
+            { uc: "1.800", price: "1.012,50" }, { uc: "3.850", price: "2.025,00" }, { uc: "8.100", price: "4.050,00" }
         ];
 
         const market = document.getElementById('market');
         inventory.forEach(item => {
             market.innerHTML += `
                 <div class="uc-card">
-                    <img src="${ucImg}" alt="UC" class="w-32 mx-auto mb-6" onerror="this.src='https://raw.githubusercontent.com/DostlukPubgUc/Pubgucshop/main/uc.png'">
-                    <h4 class="font-game text-2xl font-black text-white mb-6 italic uppercase">${item.uc} UC</h4>
-                    <div class="bg-black/40 p-4 rounded-2xl mb-8 border border-white/5 flex justify-between items-center">
-                        <span class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Baha:</span>
-                        <span class="text-xl font-black text-white italic font-game">₺${item.price}</span>
-                    </div>
-                    <button onclick="openPay('${item.uc}', '${item.price}')" class="w-full bg-white/5 hover:bg-yellow-500 hover:text-black text-white border border-white/10 py-4 rounded-2xl text-[11px] font-black transition uppercase tracking-widest">Satyn Al</button>
+                    <h4 class="font-game text-2xl font-black text-white mb-4 italic uppercase">${item.uc} UC</h4>
+                    <p class="text-xl font-black text-yellow-500 italic mb-6">₺${item.price}</p>
+                    <button onclick="openPay('${item.uc}', '${item.price}')" class="w-full bg-white/5 hover:bg-yellow-500 hover:text-black text-white border border-white/10 py-4 rounded-2xl text-[11px] font-black transition uppercase">Satyn Al</button>
                 </div>
             `;
         });
@@ -137,14 +120,17 @@
         function closeModal() { document.getElementById('paymentModal').style.display = 'none'; }
 
         function copyText(text, message) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert(message);
-            });
+            navigator.clipboard.writeText(text).then(() => { alert(message); });
         }
 
+        // ID barlagy we WhatsApp-a ugratmak
         function sendWhatsApp() {
             const id = document.getElementById('playerID').value;
-            if(!id || id.length < 5) { alert("ID belgiňizi barlaň!"); return; }
+            // ID belgisiniň uzynlygyny barlaýar (azyndan 7 san bolmaly)
+            if(!id || id.length < 7) { 
+                alert("ID belgiňizi doly ýazyň!"); 
+                return; 
+            }
             const msg = `Salam! DostlukPubgUcShop%0A Paket: ${currentUC} UC%0A Baha: ₺${currentPrice}%0A ID: ${id}`;
             window.open(`https://wa.me/905016873001?text=${msg}`, '_blank');
         }
